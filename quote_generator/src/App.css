@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed');
+
 html, body {
-  background-color: #7e7f9a;
+  background-color: #CADB7A;
 }
 .App {
   
@@ -27,11 +29,28 @@ html, body {
   to { transform: rotate(360deg); }
 }
 .display {
-  background-color: white;
+  background-color: #CADB7A;
   display: flex;
   flex-flow: column nowrap;
-  border: solid 1px black;
   margin: auto;
   justify-content: center;
   width: 50%;
+}
+
+.quote {
+  color: white;
+  font: 34px 'Roboto Condensed', sans-serif;
+}
+
+.author {
+  color: white;
+  font: 24px 'Open Sans', sans-serif;
+  text-align: right;
+}
+
+.button {
+  color: white;
+  background-color: #CADB7A;
+  border: none;
+  margin-top: 25px;
 }
