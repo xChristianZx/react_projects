@@ -12,47 +12,36 @@ class App extends Component {
       display: '',
     }
 
-    this.handleTextBoxChange = this.handleTextBoxChange.bind(this);
-    
-    
-    // console.log(Marked('I am using __markdown__.'));
+    this.handleTextBoxChange = this.handleTextBoxChange.bind(this);    
   }
   
   handleTextBoxChange(text) {
-    Marked(text, (text) =>{this.setState({
-      display: text,
-    });})
-    
-    
+    Marked.setOptions({
+      renderer: new Marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false
+    });
+
+    const markedChange = Marked(text);
+
+    this.setState({
+      display: markedChange,
+    });
   }
-
-  // handleTextBoxChange(text) {
-  //   Marked.setOptions({
-  //     renderer: new Marked.Renderer(),
-  //     gfm: true,
-  //     tables: true,
-  //     breaks: false,
-  //     pedantic: false,
-  //     sanitize: false,
-  //     smartLists: true,
-  //     smartypants: false
-  //   });
-
-  //   Marked(text){
-  //     this.setState({
-  //       display: text,
-  //     });
-  //   }
-  // }
 
   render() {
     return (
       <div className="App">
         <h2>Markdown Previewer with React</h2>
+       
         <div className="main-container">
           <TextBox onTextBoxChange={this.handleTextBoxChange} />
-          <TextOutput text={this.state.display}/>
-          
+          <TextOutput text={this.state.display}/>   
         </div>
       </div>
     );
