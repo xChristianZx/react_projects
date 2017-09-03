@@ -4,13 +4,13 @@ class TextBox extends Component {
     constructor(props) {
         super(props);
         
-        this.state = {text: 'Enter text here'};
+        this.state = {text: ''};
     }
 
     render() {
         return (
             <div className="text-box">
-                <textarea 
+                <textarea className="text-area-input" placeholder="Enter text here"
                 value={this.state.text}
                 onChange= {event => this.onInputChange(event.target.value)}
                 />
@@ -20,7 +20,7 @@ class TextBox extends Component {
 
     onInputChange(text) {
         this.setState({text});
-        
+        this.props.onTextBoxChange(text);
     }
 
 }
