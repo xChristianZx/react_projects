@@ -6,7 +6,7 @@ const TextOutput = ({text}) => {
     }
     
     return (
-        <div className="text-box">
+        <div className="text-box-output">
             <div className="text-area-output">
                 <span dangerouslySetInnerHTML={setInnerHTML()} />
             </div>

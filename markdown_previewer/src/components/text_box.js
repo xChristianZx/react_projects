@@ -9,7 +9,7 @@ class TextBox extends Component {
 
     render() {
         return (
-            <div className="text-box">
+            <div className="text-box-input">
                 <textarea className="text-area-input" placeholder="Enter text here"
                 value={this.state.text}
                 onChange= {event => this.onInputChange(event.target.value)}
