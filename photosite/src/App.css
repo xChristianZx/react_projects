@@ -1,0 +1,11 @@
+.headline-container {
+  display: flex;
+  flex: column nowrap;
+  justify-content: center;
+  align-content: center;
+  margin-top: 50px;
+}
+
+.headline-text {
+  margin: auto;
+}
