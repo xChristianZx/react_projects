@@ -1,11 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Lora|Merriweather|Open+Sans|Raleway:300|Roboto+Slab');
+
 .headline-container {
   display: flex;
   flex: column nowrap;
   justify-content: center;
   align-content: center;
-  margin-top: 50px;
+  margin: 50px 0;
 }
 
 .headline-text {
   margin: auto;
+  font: 24px 'Lora', serif;
+}
+
+.photo-container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin:auto;
+}
+
+.photo-array-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: center;
+  border: 1px solid red;
+  width: 85%;
+  min-height: 400px;
+  margin: auto;
+}
+
+.photo-list-item {
+  list-style: none;
 }
