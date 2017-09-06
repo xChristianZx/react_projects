@@ -2,34 +2,38 @@
 
 .headline-container {
   display: flex;
-  flex: column nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
   align-content: center;
-  margin: 50px 0;
+  margin: 30px auto;
+  width: 90%;
 }
 
-.headline-text {
-  margin: auto;
+.headline-text { 
+  margin: 0 50px;
   font: 24px 'Lora', serif;
 }
 
 .photo-container {
   display: flex;
   flex-flow: column nowrap;
-  margin:auto;
+  margin: auto;
+  margin-top: 10px;
 }
 
 .photo-array-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
-  border: 1px solid red;
-  width: 85%;
+  width: 90%;
   min-height: 400px;
   margin: auto;
 }
 
 .photo-list-item {
+  display: flex;
+  margin: 3px;
+  padding: 3px;
   list-style: none;
 }
