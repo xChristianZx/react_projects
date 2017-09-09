@@ -1,15 +1,15 @@
-import React, {Components} from 'react';
+import React, {Component} from 'react';
 import PhotoListItem from './photo_list_item.js';
 
 const Photolist = (props) => {
-    console.log('props.photos: ', props.photos);
-    console.log('TYPE props.photos: ', typeof props.photos);
+    // console.log('props.photos: ', props.images);
+    // console.log('TYPE props.photos: ', typeof props.images);
 
-    const photoItem = props.photos.map((photo) => {
+    const photoItem = props.images.map((photo, i) => {
         return (
             <PhotoListItem
-            openLightbox={props.openLightbox} 
-              key={photo.title}
+                onClick = {(e) => props.openLightbox(i, e)}
+                key={photo.title}
                 photo={photo}/>
         )
     });
