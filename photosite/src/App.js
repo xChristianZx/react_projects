@@ -15,12 +15,10 @@ class App extends Component {
       photos: [],
     }
     
-    this.componentDidMount = this.componentDidMount.bind(this);
-
-    console.log(typeof Photos);
+    // console.log(typeof Photos);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.setState({
       photos: Photos,
     })
