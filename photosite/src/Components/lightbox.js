@@ -44,15 +44,18 @@ class LightboxDisplay extends Component {
 
 		this.gotoNext();
     }
-    renderPhotoList = () => {        
-        return(<Photolist photos={this.props.images} />)
+    renderPhotoList = () => {
+        return (
+            <Photolist images={this.props.images} openLightbox={this.openLightbox}/>
+        )            
+    
     }
     
     render () {
         return (
             <div>
-                <Photolist images={this.props.images} openLightbox={this.openLightbox} />
-                {/* {this.renderPhotoList} */}
+                {/* <Photolist images={this.props.images} openLightbox={this.openLightbox} /> */}
+                {this.renderPhotoList()}
                 <Lightbox 
                     images={this.props.images}
                     currentImage={this.state.currentImage}

@@ -13,7 +13,6 @@ class App extends Component {
     this.state = {
       photos: [],
     }
-    
     // console.log(typeof Photos);
   }
 
@@ -27,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Headline />
-        <LightboxDisplay images={this.state.photos} photos={this.state.photos}/>
+        <LightboxDisplay images={this.state.photos} />
         {/* <PhotoList photos={this.state.photos} /> */}
         {/* <Gallery images={this.state.photos}/> */}
       </div>
