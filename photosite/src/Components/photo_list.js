@@ -6,6 +6,7 @@ const Photolist = (props) => {
     // console.log('TYPE props.photos: ', typeof props.images);
 
     const photoItem = props.images.map((photo, i) => {
+        
         return (
             <PhotoListItem
                 onClick = {(e) => props.openLightbox(i, e)}

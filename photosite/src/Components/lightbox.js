@@ -47,8 +47,7 @@ class LightboxDisplay extends Component {
     renderPhotoList = () => {
         return (
             <Photolist images={this.props.images} openLightbox={this.openLightbox}/>
-        )            
-    
+        )                
     }
     
     render () {
