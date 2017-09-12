@@ -2,27 +2,27 @@
 const Photos = [
     {
         title: 'Pic 1',
-        src: 'https://czphotoassets.s3.amazonaws.com/Test+Pics/DSCF1870.jpg'
+        src: 'https://d1ch7g5367xvmf.cloudfront.net/Test+Pics/DSCF1867.jpg'
     },
     {
         title: 'Pic 2',
-        src: 'https://czphotoassets.s3.amazonaws.com/Test+Pics/DSCF1870.jpg'
+        src: 'https://d1ch7g5367xvmf.cloudfront.net/Test+Pics/DSCF1870.jpg'
     },
     {
         title: 'Pic 3',
-        src:'https://czphotoassets.s3.amazonaws.com/Test+Pics/DSCF1872.jpg'
+        src:'https://d1ch7g5367xvmf.cloudfront.net/Test+Pics/DSCF1872.jpg'
     },
     {
         title: 'Pic 4',
-        src:'https://czphotoassets.s3.amazonaws.com/Test+Pics/DSCF1885.jpg'
+        src:'https://d1ch7g5367xvmf.cloudfront.net/Test+Pics/DSCF1885.jpg'
     },
     {
         title: 'Pic 5',
-        src:'https://czphotoassets.s3.amazonaws.com/Test+Pics/DSCF1900.jpg'
+        src:'https://d1ch7g5367xvmf.cloudfront.net/Test+Pics/DSCF1900.jpg'
     },
     {
         title: 'Pic 6',
-        src:'https://czphotoassets.s3.amazonaws.com/Test+Pics/DSCF2191.jpg'
+        src:'https://d1ch7g5367xvmf.cloudfront.net/Test+Pics/DSCF2191.jpg'
     }
 ];
 

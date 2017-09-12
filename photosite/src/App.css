@@ -37,3 +37,6 @@
   padding: 3px;
   list-style: none;
 }
+img:hover {
+  cursor: pointer;
+}
