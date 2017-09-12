@@ -62,6 +62,7 @@ class LightboxDisplay extends Component {
                     onClickNext={this.gotoNext}
                     onClose={this.closeLightbox}
                     onClickImage={this.handleClickImage}
+                    backdropClosesModal = {true}
                 />
             </div>
         )
