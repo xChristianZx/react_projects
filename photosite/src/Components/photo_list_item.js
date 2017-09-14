@@ -16,7 +16,7 @@ const PhotoListItem = ({photo, onClick}) => {
         <li className="photo-list-item">
             <div>
                 <a onClick={(e) => onClick(e)}>
-                    <img height="300px" width="350px" src={path} alt={photo.title}/>
+                    <img className="photo-list-item-img" src={path} alt={photo.title}/>
                 </a>
             </div>
         </li>
