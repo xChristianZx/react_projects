@@ -38,8 +38,10 @@ class MarketChart extends Component {
 
     render () {
         return (
-            <div>
-                Hello World!
+            <div className="temp-container">
+                <div className="market-chart-item">
+                    Some market data/ charts will go here!
+                </div>
             </div>
         )
     }

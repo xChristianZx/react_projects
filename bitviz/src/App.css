@@ -38,3 +38,19 @@
   align-self: center;
   margin: 5px;
 }
+
+.temp-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.market-chart-item {
+  border: 1px solid grey;
+  height: 200px;
+  width: 300px;
+  margin: auto;
+}
