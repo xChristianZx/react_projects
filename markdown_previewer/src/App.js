@@ -37,8 +37,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Markdown Previewer with React</h2>
-       
+        <h2 className="header">Markdown Previewer with React</h2>       
         <div className="main-container">
           <TextBox onTextBoxChange={this.handleTextBoxChange} />
           <TextOutput text={this.state.display}/>   
