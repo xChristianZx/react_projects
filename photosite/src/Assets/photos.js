@@ -59,7 +59,37 @@ const Photos = [
     index: 12,
     title: "Pic 12",
     src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF0693-731w.jpg"
-  }
+  },
+  {
+    index: 13,
+    title: "Pic 13",
+    src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF0674-1024w.jpg"
+  },
+  {
+    index: 14,
+    title: "Pic 14",
+    src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF0703-1024w.jpg"
+  },
+  {
+    index: 15,
+    title: "Pic 15",
+    src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF0845-1024w.jpg"
+  },
+  {
+    index: 16,
+    title: "Pic 16",
+    src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF0914-1024w.jpg"
+  },
+  {
+    index: 17,
+    title: "Pic 17",
+    src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF1054-1024w.jpg"
+  },
+  {
+    index: 18,
+    title: "Pic 18",
+    src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF1099-1024w.jpg"
+  },
 ];
 
 export default Photos;
