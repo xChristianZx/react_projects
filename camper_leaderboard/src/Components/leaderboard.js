@@ -44,15 +44,11 @@ class Leaderboard extends Component {
       .catch(err => console.log("ERROR:", err));
   };
 
-  renderList = (props) => {
+  renderList = props => {
     const boardItems = props.map(person => {
       return <BoardListItem person={person} key={person.username} />;
     });
-    return (
-        <ul>
-        {boardItems}
-        </ul>
-    )
+    return <ul>{boardItems}</ul>;
   };
 
   render() {
