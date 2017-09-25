@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BoardListItem from "./board_list_item.js";
+import BoardList from "./board_list.js";
 import Axios from "axios";
 
 class Leaderboard extends Component {
@@ -7,7 +7,8 @@ class Leaderboard extends Component {
     super(props);
     this.state = {
       thirtyDay: [],
-      allTime: []
+      allTime: [],
+      currentList: []
     };
   }
 
@@ -24,7 +25,8 @@ class Leaderboard extends Component {
       .then(resp => {
         console.log("30 Day:", resp.data);
         this.setState({
-          thirtyDay: resp.data
+          thirtyDay: resp.data,
+          currentList: resp.data
         });
       })
       .catch(err => console.log("ERROR:", err));
@@ -44,30 +46,28 @@ class Leaderboard extends Component {
       .catch(err => console.log("ERROR:", err));
   };
 
+  handleAllTimeClick = () => {
+    this.setState({ currentList: this.state.allTime });
+  };
+
+  handleRecentClick = () => {
+    this.setState({ currentList: this.state.thirtyDay });
+  };
+
   renderList = props => {
-    const boardItems = props.map((person, i) => {
-      return <BoardListItem person={person} key={person.username} rank={i} />;
-    });
     return (
-      <table className="leaderboard-list">
-        <thead>
-          <tr className="board-item-header">
-            <th className="board-item-rank">Rank</th>
-            <th className="board-item-name">Name</th>
-            <th className="board-item-alltime">Alltime</th>
-            <th className="board-item-recent">Recent</th>
-          </tr>
-        </thead>
-        <tbody>{boardItems}</tbody>
-      </table>
+      <BoardList
+        props={props}
+        handleAllTimeClick={this.handleAllTimeClick}
+        handleRecentClick={this.handleRecentClick}
+      />
     );
   };
 
   render() {
     return (
       <div className="leaderboard-container">
-        {this.renderList(this.state.allTime)}
-        {this.renderList(this.state.thirtyDay)}
+        {this.renderList(this.state.currentList)}
       </div>
     );
   }
