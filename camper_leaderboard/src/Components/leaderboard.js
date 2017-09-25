@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BoardListItem from "./board_item.js";
+import BoardListItem from "./board_list_item.js";
 import Axios from "axios";
 
 class Leaderboard extends Component {
@@ -45,14 +45,31 @@ class Leaderboard extends Component {
   };
 
   renderList = props => {
-    const boardItems = props.map(person => {
-      return <BoardListItem person={person} key={person.username} />;
+    const boardItems = props.map((person, i) => {
+      return <BoardListItem person={person} key={person.username} rank={i} />;
     });
-    return <ul>{boardItems}</ul>;
+    return (
+      <table className="leaderboard-list">
+        <thead>
+          <tr className="board-item-header">
+            <th className="board-item-rank">Rank</th>
+            <th className="board-item-name">Name</th>
+            <th className="board-item-alltime">Alltime</th>
+            <th className="board-item-recent">Recent</th>
+          </tr>
+        </thead>
+        <tbody>{boardItems}</tbody>
+      </table>
+    );
   };
 
   render() {
-    return <div>{this.renderList(this.state.allTime)}</div>;
+    return (
+      <div className="leaderboard-container">
+        {this.renderList(this.state.allTime)}
+        {this.renderList(this.state.thirtyDay)}
+      </div>
+    );
   }
 }
 

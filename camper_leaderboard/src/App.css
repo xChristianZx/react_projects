@@ -1,3 +1,56 @@
 .App {
   text-align: center;
 }
+
+.leaderboard-container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: auto;
+}
+.leaderboard-list {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: auto;
+  width: 90%;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.board-item-header {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: auto;
+  justify-content: space-between;
+  align-content: center;
+  list-style: none;
+  border: 1px solid black;
+  width: 90%;
+}
+
+.board-item {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: auto;
+  justify-content: flex-start;
+  align-content: center;
+  list-style: none;
+  border: 1px solid black;
+  width: 90%;
+}
+.board-item-rank{
+  margin: auto;
+}
+.board-item-name {
+  margin: auto;
+}
+
+.board-item-img {
+  margin: auto;
+}
+
+.board-item-alltime{
+  margin: auto;
+}
+.board-item-recent{
+  margin: auto;
+}
