@@ -9,6 +9,7 @@
   line-height: 8vh;
   text-align: center;
   border-radius: 5px;
+  border: 1px solid black;
 }
 
 .leaderboard-container {
@@ -34,7 +35,7 @@
   width: 100%;
   font-size: 1.5em;
   border-bottom: 1px solid black;
-  background-color:  green;
+  background-color: green;
   color: white;
   height: 2em;
   border-top-left-radius: 5px;
@@ -43,10 +44,12 @@
 
 .board-item-header .board-item-alltime {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .board-item-header .board-item-recent {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 td {
@@ -72,8 +75,9 @@ td {
   align-items: center;
   width: 25vw;
 }
-.board-item-image-spacer{
-width: 4vw;
+
+.board-item-image-spacer {
+  width: 4vw;
 }
 
 th.board-item-name-container {
@@ -91,7 +95,7 @@ th.board-item-name-container {
   border-radius: 50%;
   width: 4vw;
   height: 8vh;
-  margin: .25em 0;
+  margin: 0.25em 0;
 }
 
 .board-item-alltime {
@@ -101,6 +105,28 @@ th.board-item-name-container {
   width: 20vw;
 }
 
-.board-item:nth-child(even){
+.board-item:nth-child(even) {
   background-color: #e9eae8;
+}
+
+@media all and (max-width: 975px) {
+  .leaderboard-table {
+    width: 95vw;
+  }
+  .board-item-name-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 35vw;
+  }
+  th.board-item-name-container {
+    width: 21vw;
+  }
+  th.board-item-image-spacer {
+    width: 7vw;
+  }
+  th.board-item-alltime {
+    margin-left: 7vw;
+  }
 }
