@@ -14,7 +14,6 @@ const BoardListItem = ({ person, rank }) => {
         />
         <span className="board-item-name">{person.username}</span>
       </td>
-      {/* <td className="board-item-name">{person.username}</td> */}
       <td className="board-item-alltime">{person.alltime}</td>
       <td className="board-item-recent">{person.recent}</td>
     </tr>
