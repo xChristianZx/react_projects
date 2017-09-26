@@ -1,3 +1,3 @@
 ## FCC Leaderboard
 
-Hosted on Surge at [few-plantation.surge.sh]
+Hosted on Surge at [http://few-plantation.surge.sh]
