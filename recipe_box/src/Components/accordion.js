@@ -53,6 +53,13 @@ export default class AccordionExampleStyled extends Component {
             {' '}dog from a shelter, helps give a good home to a dog who may not find one so readily.
           </p>
         </Accordion.Content>
+        <Accordion.Title active={activeIndex === 3} index={3} onClick={this.handleClick}>
+            <Icon name='dropdown' />
+            WEEEEE!
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === 3}>
+            <p>BARRRRRRRR</p>
+        </Accordion.Content>
       </Accordion>
     )
   }
