@@ -22,15 +22,15 @@ class InputForm extends Component {
           <Form size={"large"}>
             <Form.Field>
               <label>Recipe Name</label>
-              <Form.Input placeholder="Recipe Name" type="text" width={8} />
+              <Form.Input placeholder="casserole, tootsieroll, eggrolls..." type="text" width={8} />
             </Form.Field>
             <Form.Field>
               <label>Ingredients</label>
-              <input type="text" placeholder="eggs, bacon, hashbrowns..." />
+              <Form.Input type="text" placeholder="eggs, bacon, hashbrowns..." width={8}/>
             </Form.Field>
             <Form.Field>
               <label>Instructions</label>
-              <textarea type="text" rows={2} />
+              <textarea type="text" rows={3} />
             </Form.Field>
             <Button className='button' type="submit" floated='right'>Add</Button>
           </Form>
