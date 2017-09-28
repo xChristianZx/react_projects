@@ -3,16 +3,29 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.form-container-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  width: 45vw;
+}
+
 .form-container {
   display: flex;
   flex-flow: column nowrap;
   margin: auto;
   border: 1px solid black;
-  padding: 5rem;
+  padding: 2rem;
   border-radius: 2rem;
-  width: 65vw;
+  width: 45vw;
 }
-
+.form-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
 .button {
   width: 10vw;
 }
