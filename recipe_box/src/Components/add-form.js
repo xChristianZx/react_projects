@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Container, Header, Form, Button, Input } from "semantic-ui-react";
+import React from "react";
+import { Form, Button } from "semantic-ui-react";
+import IngredientList from "./add-ingredients.js";
 
 const AddForm = props => {
   return (
@@ -14,16 +15,25 @@ const AddForm = props => {
           type="text"
         />
       </Form.Field>
-      <Form.Field width={8}>
-        <label>Ingredients</label>
-        <Form.Input
-          name="ingredients"
-          onChange={props.handleChange}
-          value={props.recipes.ingredients}
-          type="text"
-          placeholder="eggs, bacon, hashbrowns..."
-        />
-      </Form.Field>
+      <Form.Group>
+        <IngredientList items={props.recipes.ingredients} />
+        <Form.Field width={8}>
+          <label>Ingredients</label>
+          <Form.Input
+            name="ingredients"
+            onChange={props.handleIngredientsChange}
+            value={props.addIngredients}
+            type="text"
+            placeholder="eggs, bacon, hashbrowns..."
+          />
+        </Form.Field>
+        <Button
+          circular
+          className="button-ingredients"          
+          type="submit"
+          size="mini"
+        >+</Button>
+      </Form.Group>
       <Form.Field width={8}>
         <label>Instructions</label>
         <textarea

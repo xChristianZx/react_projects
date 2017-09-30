@@ -3,7 +3,6 @@ import "./App.css";
 // import AccordionExampleStyled from './Components/accordion.js';
 import TextOutput from "./Components/text-output.js";
 import InputForm from "./Components/input-form.js";
-import { Container } from "semantic-ui-react";
 
 class App extends Component {
   constructor(props) {
@@ -12,9 +11,10 @@ class App extends Component {
       items: [],
       recipe: {
         title: "",
-        ingredients: "",
+        ingredients: [],
         instructions: ""
-      }
+      },
+      addIngredient: ""
     };
     console.log("APP RECIPIES:", this.state.items);
   }
@@ -24,6 +24,10 @@ class App extends Component {
     const name = e.target.name;
     recipe[name] = e.target.value;
     this.setState({ recipe: recipe });
+  };
+
+  handleIngredientsChange = e => {
+    this.setState({ addIngredient: e.target.value });
   };
 
   handleSubmit = e => {
@@ -36,24 +40,31 @@ class App extends Component {
       items: prevState.items.concat(newRecipe),
       recipe: {
         title: "",
-        ingredients: "",
+        ingredients: [],
         instructions: ""
       }
     }));
     // this.onInputChange(this.state.recipe);
-    console.log('HandleSubmit',this.state.items, this.state.recipe);
+    console.log("HandleSubmit", this.state.items, this.state.recipe);
   };
 
   onInputChange = newRecipe => {
     this.setState({ recipe: newRecipe });
     console.log("App:", this.state.items);
+    console.log("Ingredients:", this.state.recipe.ingredients);
   };
 
   render() {
     return (
       <div className="App">
-        <InputForm recipes={this.state.recipe} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-        <TextOutput recipeList={this.state.items}/>
+        <InputForm
+          recipes={this.state.recipe}
+          addIngredients={this.state.addIngredient}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          handleIngredientsChange={this.handleIngredientsChange}
+        />
+        <TextOutput recipeList={this.state.items} />
       </div>
     );
   }
