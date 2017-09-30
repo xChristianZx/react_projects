@@ -6,9 +6,9 @@ const TextOutput = ({ recipeList }) => {
     return;
   }
   console.log(recipeList);
-  const textArray = recipeList.map((text, i) => {
+  const textArray = recipeList.map((text) => {
     return (
-      <div key={i}>
+      <div key={text.id}>
         <p>{text.recipe.title}</p>
       </div>
     );
