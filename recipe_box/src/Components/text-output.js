@@ -5,7 +5,7 @@ const TextOutput = ({ recipeList }) => {
   if (!recipeList) {
     return;
   }
-  console.log(recipeList);
+//   console.log(recipeList);
 
   const panels = recipeList.map((panel, i) => {
     return {
@@ -14,15 +14,17 @@ const TextOutput = ({ recipeList }) => {
         key: `title-${i}`
       },
       content: {
-        content: <List items={panel.recipe.ingredients} bulleted/>,
+        content: `${panel.recipe.ingredients} 
+        ${panel.recipe.instructions}`,
         key: `content-${i}`
       }
-    //   panel.recipe.instructions
+
+      // <List items={panel.recipe.ingredients} bulleted/>
     };
   });
 
   return (
-    <div className='output-container'>
+    <div className="output-container">
       <Accordion defaultActiveIndex={0} panels={panels} styled />
     </div>
   );

@@ -12,8 +12,11 @@ const InputForm = props => {
         </Header>
         <AddForm
           recipes={recipes}
+          ingredients={props.ingredients}
           handleChange={props.handleChange}
           handleSubmit={props.handleSubmit}
+          handleIngredientsChange={props.handleIngredientsChange}
+          handleIngredientSubmit={props.handleIngredientSubmit}
         />
       </Container>
     </div>
