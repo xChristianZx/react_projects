@@ -41,9 +41,8 @@ class AddIngredient extends Component {
     const items = list.map(item => {
       return (
         <div key={item.id}>
-          <List.Item className="ingredient-list-item" floated="left">
-            {item.ingredient}
-            {item.id}
+          <List.Item as='li' className="ingredient-list-item" floated="left">
+            {item.ingredient}            
             <Button
               circular
               size="mini"
@@ -55,7 +54,7 @@ class AddIngredient extends Component {
         </div>
       );
     });
-    return <List bulleted>{items}</List>;
+    return <List as='ul'>{items}</List>;
   };
 
   render() {
