@@ -53,17 +53,25 @@ class App extends Component {
   };
 
   handleIngredientSubmit = e => {
-    if(this.state.ingredient == '' || this.state.ingredient == null) {return -1;}    
+    if(this.state.ingredient === '' || this.state.ingredient === null) {return -1;}    
     e.preventDefault();
     const newItem = {
       ingredient: this.state.ingredient,
       id: Date.now()
-    };
-    
+    };    
     this.setState((prevState, {recipe}) => ({
-      recipe: {...recipe, ingredients: prevState.recipe.ingredients.concat([newItem])},
-      ingredient: ""
-    }));
+      recipe: {
+        title: this.state.recipe.title,
+        ingredients: prevState.recipe.ingredients.concat(newItem),
+        instructions: this.state.recipe.instructions,
+      },
+      ingredient:""
+    }))
+    /* may look into immutablitiy-helper or object.assign, on a day we feel ambitious */
+    // this.setState((prevState, {recipe}) => ({
+    //   recipe: {...recipe, ingredients: prevState.recipe.ingredients.concat([newItem])},
+    //   ingredient: ""
+    // }));    
     // this.setState({ingredients: [...this.state.recipe.ingredients, newItem]})
     // this.setState({ ingredients: [e.target.value, ...this.state.ingredients]}) 
   };
