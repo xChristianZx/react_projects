@@ -58,7 +58,7 @@ class AddIngredient extends Component {
               size="mini"
               icon="close"
               floated="right"
-              onClick={this.deleteItem.bind(this, item.id)}
+              onClick={this.props.deleteItem.bind(this, item.id)}
             />
           </List.Item>
         </div>

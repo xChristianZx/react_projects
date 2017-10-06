@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Container, Accordion, Icon, Label, List } from "semantic-ui-react";
+import React from "react";
+import { Accordion } from "semantic-ui-react";
+// import { Container, Accordion, Icon, Label, List } from "semantic-ui-react";
 
 const TextOutput = ({ recipeList }) => {
   if (!recipeList) {

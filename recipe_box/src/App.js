@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import TextOutput from "./Components/TextOutput.js";
 import InputForm from "./Components/InputForm.js";
-import AddIngredient from './Components/AddIngredient.js';
+// import AddIngredient from './Components/AddIngredient.js';
 
 class App extends Component {
   constructor(props) {
@@ -43,9 +43,7 @@ class App extends Component {
         instructions: ""
       }
     }));
-
-    // this.onInputChange(this.state.recipe);
-    console.log("HandleSubmit", this.state.recipeList, this.state.recipe);
+    // console.log("HandleSubmit", this.state.recipeList, this.state.recipe);
   };
 
   handleIngredientChange = e => {
@@ -76,6 +74,16 @@ class App extends Component {
     // this.setState({ ingredients: [e.target.value, ...this.state.ingredients]}) 
   };
 
+  deleteItem = (id, e) => {
+    this.setState((prevState, {recipe}) => ({
+      recipe:{
+        title: this.state.recipe.title,
+        ingredients: prevState.recipe.ingredients.filter(item => item.id !== id),
+        instructions: this.state.recipe.instructions,
+      }
+    }));
+  };
+
   onInputChange = newRecipe => {
     this.setState({ recipe: newRecipe });
     console.log("App:", this.state.recipeList);
@@ -96,6 +104,7 @@ class App extends Component {
           handleSubmit={this.handleSubmit}
           handleIngredientChange={this.handleIngredientChange}
           handleIngredientSubmit={this.handleIngredientSubmit}
+          deleteItem={this.deleteItem}
         />
         {/* <AddIngredient /> */}
         <TextOutput recipeList={this.state.recipeList} />

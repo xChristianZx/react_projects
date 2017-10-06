@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
-import IngredientList from "./IngredientList.js";
+// import IngredientList from "./IngredientList.js";
 import AddIngredient from "./AddIngredient.js";
 
 const AddForm = props => {
@@ -29,6 +29,7 @@ const AddForm = props => {
         <AddIngredient
           handleIngredientChange={props.handleIngredientChange}
           handleIngredientSubmit={props.handleIngredientSubmit}
+          deleteItem={props.deleteItem}
           recipe={props.recipe}
           ingredient={props.ingredient}
         />
