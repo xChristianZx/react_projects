@@ -13,7 +13,7 @@ class AddIngredient extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      ingredientsList: [],
       ingredient: "",
       modalOpen: false
     };
@@ -36,14 +36,14 @@ class AddIngredient extends Component {
       id: Date.now()
     };
     this.setState(prevState => ({
-      items: prevState.items.concat(newItem),
+      ingredientsList: prevState.ingredientsList.concat(newItem),
       ingredient: ""
     }));
   };
 
   deleteItem = (id, e) => {
     this.setState(prevState => ({
-      items: prevState.items.filter(item => item.id !== id)
+      ingredientsList: prevState.ingredientsList.filter(item => item.id !== id)
     }));
   };
 
@@ -68,32 +68,38 @@ class AddIngredient extends Component {
   };
 
   render() {
+    //console.log('ingredientsList: ',this.state.ingredientsList);
     return (
       <Modal
-        dimmer={true}
         trigger={<Button onClick={this.handleOpen}>Add Ingredients</Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        basic
-        size="large"
+        size="small"
       >
         <Container className="add-ingredients-list-container" text>
           <Modal.Content>
             <Header content="Ingredients" as="h2" textAlign="center" dividing />
-            {this.renderList(this.state.items)}
-            <Form onSubmit={this.handleSubmit}>
+            {this.renderList(this.props.recipe.ingredients)}
+            <Form onSubmit={this.props.handleIngredientSubmit}>
               <Form.Group>
-                <Form.Input
-                  value={this.state.ingredient}
-                  onChange={this.handleChange}
+                <Form.Input                  
+                  name="ingredients"
+                  value={this.props.ingredient}
+                  onChange={this.props.handleIngredientChange}
                   width={8}
                 />
                 <Button icon="add" circular />
               </Form.Group>
             </Form>
           </Modal.Content>
-          <Modal.Actions>
-            <Button onClick={this.handleClose} floated="right" attached='bottom'>Done</Button>
+          <Modal.Actions className="modal-ingredients-button-container">
+            <Button
+              onClick={this.handleClose}
+              floated="right"
+              attached="bottom"
+            >
+              Done
+            </Button>
           </Modal.Actions>
         </Container>
       </Modal>
@@ -102,7 +108,7 @@ class AddIngredient extends Component {
 }
 
 AddIngredient.propTypes = {
-  items: PropTypes.array,
+  ingredientsList: PropTypes.array,
   ingredient: PropTypes.string
 };
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Header } from "semantic-ui-react";
-import AddForm from "./add-form.js";
+import AddForm from "./AddRecipeForm.js";
 const InputForm = props => {
-  const recipes = props.recipes;
+  const recipe = props.recipe;
 
   return (
     <div className="form-container-wrapper">
@@ -11,11 +11,11 @@ const InputForm = props => {
           Add Recipe
         </Header>
         <AddForm
-          recipes={recipes}
-          ingredients={props.ingredients}
+          recipe={props.recipe}
+          ingredient={props.ingredient}
           handleChange={props.handleChange}
           handleSubmit={props.handleSubmit}
-          handleIngredientsChange={props.handleIngredientsChange}
+          handleIngredientChange={props.handleIngredientChange}
           handleIngredientSubmit={props.handleIngredientSubmit}
         />
       </Container>

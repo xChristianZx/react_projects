@@ -32,12 +32,41 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  padding: 1em;
 }
-.button {
-  width: 10vw;
+// .button {
+//   width: 10vw;
+// }
+// .button-ingredients {
+//   width: 2vw;
+// }
+
+.add-ingredients-list-container {
+  display: flex;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 1em;
+  color: black;
+  padding:1em 2em;
+  margin: 1.5em;
+  // min-height: 50vh;
 }
-.button-ingredients {
-  width: 2vw;
+.ingredient-list-item{
+  margin: 1em;
+}
+
+.modal-open-button-wrapper{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 2em;
+}
+
+.modal-ingredients-button-container{
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  margin: auto;
 }
 .output-container {
   display: flex;

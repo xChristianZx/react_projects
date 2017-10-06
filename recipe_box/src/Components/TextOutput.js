@@ -14,7 +14,7 @@ const TextOutput = ({ recipeList }) => {
         key: `title-${i}`
       },
       content: {
-        content: `${panel.recipe.ingredients} 
+        content: `${panel.recipe.ingredients[i].ingredient}
         ${panel.recipe.instructions}`,
         key: `content-${i}`
       }
