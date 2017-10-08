@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Accordion, Icon, Button } from "semantic-ui-react";
+import { Accordion, Icon, Button, Modal } from "semantic-ui-react";
+import InputForm from "./InputForm";
 
 class RecipeAccordion extends Component {
   constructor(props) {
     super(props);
     this.state = { activeIndex: 0 };
   }
-  
+
   handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const { activeIndex } = this.state;
@@ -26,7 +27,15 @@ class RecipeAccordion extends Component {
             index={0}
             onClick={this.handleClick}
           >
-            <Button icon="add" circular floated='right' />
+            <InputForm
+              recipe={this.props.recipe}
+              ingredient={this.props.ingredient}
+              handleChange={this.props.handleChange}
+              handleSubmit={this.props.handleSubmit}
+              handleIngredientChange={this.props.handleIngredientChange}
+              handleIngredientSubmit={this.props.handleIngredientSubmit}
+              deleteItem={this.props.deleteItem}
+            />
           </Accordion.Title>
         </Accordion>
       </div>
