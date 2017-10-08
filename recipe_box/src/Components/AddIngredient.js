@@ -41,7 +41,7 @@ class AddIngredient extends Component {
     }));
   };
 
-  deleteItem = (id, e) => {
+  deleteItem = (id) => {
     this.setState(prevState => ({
       ingredientsList: prevState.ingredientsList.filter(item => item.id !== id)
     }));

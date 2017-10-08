@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Header } from "semantic-ui-react";
 import AddForm from "./AddRecipeForm.js";
 const InputForm = props => {
-  // const recipe = props.recipe;
-
   return (
     <div className="form-container-wrapper">
       <Container className="form-container" textAlign="center">

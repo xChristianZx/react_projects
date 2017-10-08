@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import TextOutput from "./Components/TextOutput.js";
 import InputForm from "./Components/InputForm.js";
-// import AddIngredient from './Components/AddIngredient.js';
+import RecipeAccordion from "./Components/Accordion.js";
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +74,13 @@ class App extends Component {
     // this.setState({ ingredients: [e.target.value, ...this.state.ingredients]}) 
   };
 
-  deleteItem = (id, e) => {
+  deleteRecipe = (id) => {
+    this.setState((prevState, {recipeList}) => ({
+      recipeList: prevState.recipeList.filter(item => item.id !== id)
+    }))
+  };
+
+  deleteItem = (id) => {
     this.setState((prevState, {recipe}) => ({
       recipe:{
         title: this.state.recipe.title,
@@ -97,7 +103,7 @@ class App extends Component {
     console.log('Ingredients:', this.state.recipe.ingredients, typeof this.state.recipe.ingredients);
     return (
       <div className="App">
-        <InputForm
+        {/* <InputForm
           recipe={this.state.recipe}
           ingredient={this.state.ingredient}
           handleChange={this.handleChange}
@@ -105,9 +111,9 @@ class App extends Component {
           handleIngredientChange={this.handleIngredientChange}
           handleIngredientSubmit={this.handleIngredientSubmit}
           deleteItem={this.deleteItem}
-        />
-        {/* <AddIngredient /> */}
-        <TextOutput recipeList={this.state.recipeList} />
+        />        
+        <TextOutput recipeList={this.state.recipeList} />       */}
+        <RecipeAccordion />  
       </div>
     );
   }

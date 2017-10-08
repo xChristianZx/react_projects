@@ -1,6 +1,5 @@
 import React from "react";
-import { Accordion, List, Message } from "semantic-ui-react";
-// import { Container, Accordion, Icon, Label, List } from "semantic-ui-react";
+import { Accordion, List } from "semantic-ui-react";
 
 const TextOutput = ({ recipeList }) => {
   if (!recipeList) {
@@ -21,11 +20,13 @@ const TextOutput = ({ recipeList }) => {
         content: (
           <div>
             <List items={ingredientList} bulleted />
-            <Message content={instructions} />
+            <div>
+              <p>{instructions}</p>
+            </div>
           </div>
         ),
         key: `content-${i}`
-      }      
+      }
     };
   });
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button } from "semantic-ui-react";
-// import IngredientList from "./IngredientList.js";
 import AddIngredient from "./AddIngredient.js";
 
 const AddForm = props => {
@@ -12,7 +11,7 @@ const AddForm = props => {
         onSubmit={props.handleSubmit}
       >
         <Form.Field width={8}>
-          <label>Recipe Name</label>
+          <label className='form-field-label'>Recipe Name</label>
           <Form.Input
             name="title"
             onChange={props.handleChange}
@@ -22,8 +21,6 @@ const AddForm = props => {
           />
         </Form.Field>
       </Form>
-
-      {/* <IngredientList items={[props.ingredients]} /> */}
 
       <div className="modal-open-button-wrapper">
         <AddIngredient
@@ -41,7 +38,7 @@ const AddForm = props => {
         onSubmit={props.handleSubmit}
       >
         <Form.Field width={8}>
-          <label>Instructions</label>
+          <label className='form-field-label'>Instructions</label>
           <textarea
             name="instructions"
             onChange={props.handleChange}
