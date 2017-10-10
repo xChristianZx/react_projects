@@ -29,6 +29,10 @@ body {
   align-content: center;
   width: 45vw;
   margin: 2rem;
+  .header {
+    color: white;
+    background-color: $primary-color;
+  }
 }
 
 .form-container {
@@ -36,7 +40,7 @@ body {
   flex-flow: column nowrap;
   margin: auto;
   border: 1px solid black;
-  background-color: $primary-color;
+  background-color: white;
   padding: 2rem;
   border-radius: 2rem;
   width: 45vw;

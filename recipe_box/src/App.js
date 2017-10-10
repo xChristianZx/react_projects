@@ -138,6 +138,7 @@ class App extends Component {
           handleIngredientChange={this.handleIngredientChange}
           handleIngredientSubmit={this.handleIngredientSubmit}
           deleteItem={this.deleteItem}
+          deleteRecipe={this.deleteRecipe}
         />
 
         {/* <RecipeAccordion

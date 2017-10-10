@@ -1,5 +1,5 @@
 import React from "react";
-import { Accordion, List } from "semantic-ui-react";
+import { Accordion, List, Button } from "semantic-ui-react";
 import InputForm from "./InputForm";
 
 const TextOutput = props => {
@@ -11,11 +11,23 @@ const TextOutput = props => {
     const ingredients = panel.recipe.ingredients;
     const ingredientList = ingredients.map(item => item.ingredient);
     const instructions = panel.recipe.instructions;
+    const title = panel.recipe.title;
 
     console.log("HERE I AM:", ingredientList);
     return {
       title: {
-        content: panel.recipe.title,
+        content: (
+          <span>
+            <h2>{title}<Button
+              circular
+              size="mini"
+              icon="close"
+              floated="right"
+              onClick={props.deleteRecipe.bind(this, panel.id)}
+            />
+            </h2>
+          </span>
+        ),
         key: `title-${i}`
       },
       content: {
@@ -35,7 +47,7 @@ const TextOutput = props => {
   const addRecipeButton = {
     title: {
       content: (
-        <span className='accordion-title'>
+        <span className="accordion-title">
           Click the button to add a recipe{" "}
           <InputForm
             recipe={props.recipe}
