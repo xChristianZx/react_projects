@@ -17,7 +17,7 @@ class InputForm extends Component {
   render() {
     return (
       <Modal
-        trigger={<Button onClick={this.handleOpen} icon='add' circular floated='right'></Button>}
+        trigger={<Button onClick={this.handleOpen} className="input-form-modal-button" icon='add' circular floated='right'></Button>}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         basic

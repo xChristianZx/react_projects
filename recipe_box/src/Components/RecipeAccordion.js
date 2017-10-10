@@ -16,17 +16,27 @@ class RecipeAccordion extends Component {
     this.setState({ activeIndex: newIndex });
   };
 
+  renderRecipeList = () => {
+    return ( 
+      <div>
+        <Accordion.Title content="test 1"/>
+        <Accordion.Content content="testing" />
+      </div>
+    );
+  };
+
   render() {
     const { activeIndex } = this.state;
 
     return (
       <div className="output-container">
-        <Accordion styled>
+        <Accordion className="accordion-title" styled>
           <Accordion.Title
             active={activeIndex === 0}
             index={0}
             onClick={this.handleClick}
           >
+            Click the button to add a recipe
             <InputForm
               recipe={this.props.recipe}
               ingredient={this.props.ingredient}

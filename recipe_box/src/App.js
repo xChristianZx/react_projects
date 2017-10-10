@@ -128,8 +128,9 @@ class App extends Component {
           handleIngredientSubmit={this.handleIngredientSubmit}
           deleteItem={this.deleteItem}
         /> */}
-        {/* <TextOutput recipeList={this.state.recipeList} />       */}
-        <RecipeAccordion
+
+        <TextOutput
+          recipeList={this.state.recipeList}
           recipe={this.state.recipe}
           ingredient={this.state.ingredient}
           handleChange={this.handleChange}
@@ -138,6 +139,16 @@ class App extends Component {
           handleIngredientSubmit={this.handleIngredientSubmit}
           deleteItem={this.deleteItem}
         />
+
+        {/* <RecipeAccordion
+          recipe={this.state.recipe}
+          ingredient={this.state.ingredient}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          handleIngredientChange={this.handleIngredientChange}
+          handleIngredientSubmit={this.handleIngredientSubmit}
+          deleteItem={this.deleteItem}
+        /> */}
       </div>
     );
   }

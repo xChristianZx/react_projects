@@ -96,7 +96,6 @@ class AddIngredient extends Component {
             <Button
               onClick={this.handleClose}
               floated="right"
-              attached="bottom"
             >
               Done
             </Button>
