@@ -14,8 +14,19 @@ class App extends Component {
         ingredients: [],
         instructions: ""
       },
-      ingredient: ""
+      ingredient: "",
+      inputModalOpen: false
     };
+  }
+
+  componentDidMount() {
+    const localKeys = Object.keys(localStorage);
+    const restoredLocal = localKeys.map(item => {
+      return JSON.parse(localStorage.getItem(item));
+    });
+    this.setState({
+      recipeList: restoredLocal
+    });
   }
 
   handleChange = e => {
@@ -35,6 +46,11 @@ class App extends Component {
       },
       id: Date.now()
     };
+
+    const stringifyNewRecipe = JSON.stringify(newRecipe);
+    console.log("StringMe", stringifyNewRecipe);
+    localStorage.setItem(newRecipe.id, stringifyNewRecipe);
+
     this.setState(prevState => ({
       recipeList: prevState.recipeList.concat([newRecipe]),
       recipe: {
@@ -77,6 +93,7 @@ class App extends Component {
   };
 
   deleteRecipe = id => {
+    localStorage.removeItem(id);
     this.setState((prevState, { recipeList }) => ({
       recipeList: prevState.recipeList.filter(item => item.id !== id)
     }));
@@ -94,6 +111,22 @@ class App extends Component {
     }));
   };
 
+  editRecipe = (id, e) => {
+    const item = JSON.parse(localStorage.getItem(id));
+    console.log(item);
+    console.log(e.target);
+    <InputForm
+      open={this.state.inputModalOpen}
+      recipe={item.recipe}
+      ingredient={this.state.ingredient}
+      handleChange={this.handleChange}
+      handleSubmit={this.handleSubmit}
+      handleIngredientChange={this.handleIngredientChange}
+      handleIngredientSubmit={this.handleIngredientSubmit}
+      deleteItem={this.deleteItem}
+    />;
+  };
+
   onInputChange = newRecipe => {
     this.setState({ recipe: newRecipe });
     console.log("App:", this.state.recipeList);
@@ -101,24 +134,27 @@ class App extends Component {
   };
 
   render() {
-    console.log("Recipe:", this.state.recipe, typeof this.state.recipe);
-    console.log(
-      "RecipeList:",
-      this.state.recipeList,
-      typeof this.state.recipeList
-    );
-    console.log(
-      "Ingredient:",
-      this.state.ingredient,
-      typeof this.state.ingredient
-    );
-    console.log(
-      "Ingredients:",
-      this.state.recipe.ingredients,
-      typeof this.state.recipe.ingredients
-    );
+    console.log("Recipe:", this.state.recipe);
+    console.log("RecipeList:", this.state.recipeList);
+    console.log("Ingredient:", this.state.ingredient);
+    console.log("Ingredients:", this.state.recipe.ingredients);
+    console.log("LocalStorage:", localStorage);
+    console.log("inputModalOpen:", this.state.inputModalOpen);
     return (
       <div className="App">
+        <TextOutput
+          recipeList={this.state.recipeList}
+          recipe={this.state.recipe}          
+          ingredient={this.state.ingredient}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          handleIngredientChange={this.handleIngredientChange}
+          handleIngredientSubmit={this.handleIngredientSubmit}
+          deleteItem={this.deleteItem}
+          deleteRecipe={this.deleteRecipe}
+          editRecipe={this.editRecipe}          
+        />
+
         {/* <InputForm
           recipe={this.state.recipe}
           ingredient={this.state.ingredient}
@@ -128,19 +164,6 @@ class App extends Component {
           handleIngredientSubmit={this.handleIngredientSubmit}
           deleteItem={this.deleteItem}
         /> */}
-
-        <TextOutput
-          recipeList={this.state.recipeList}
-          recipe={this.state.recipe}
-          ingredient={this.state.ingredient}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          handleIngredientChange={this.handleIngredientChange}
-          handleIngredientSubmit={this.handleIngredientSubmit}
-          deleteItem={this.deleteItem}
-          deleteRecipe={this.deleteRecipe}
-        />
-
         {/* <RecipeAccordion
           recipe={this.state.recipe}
           ingredient={this.state.ingredient}

@@ -18,14 +18,23 @@ const TextOutput = props => {
       title: {
         content: (
           <span>
-            <h2>{title}<Button
-              circular
-              size="mini"
-              icon="close"
-              floated="right"
-              onClick={props.deleteRecipe.bind(this, panel.id)}
-            />
-            </h2>
+            <h3>
+              {title}
+              <Button
+                circular
+                size="mini"
+                icon="close"
+                floated="right"
+                onClick={props.deleteRecipe.bind(this, panel.id)}
+              />
+              <Button
+                circular
+                size="mini"
+                icon="edit"
+                floated="right"
+                onClick={props.editRecipe.bind(this, panel.id)}
+              />
+            </h3>
           </span>
         ),
         key: `title-${i}`
@@ -44,19 +53,19 @@ const TextOutput = props => {
     };
   });
 
-  const addRecipeButton = {
+  const addRecipePanel = {
     title: {
       content: (
         <span className="accordion-title">
           Click the button to add a recipe{" "}
           <InputForm
             recipe={props.recipe}
-            ingredient={props.ingredient}
+            ingredient={props.ingredient}            
             handleChange={props.handleChange}
             handleSubmit={props.handleSubmit}
             handleIngredientChange={props.handleIngredientChange}
             handleIngredientSubmit={props.handleIngredientSubmit}
-            deleteItem={props.deleteItem}
+            deleteItem={props.deleteItem}            
           />
         </span>
       ),
@@ -68,7 +77,7 @@ const TextOutput = props => {
     <div className="output-container">
       <Accordion
         defaultActiveIndex={0}
-        panels={panels.concat(addRecipeButton)}
+        panels={panels.concat(addRecipePanel)}
         styled
       />
     </div>
