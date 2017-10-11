@@ -13,7 +13,7 @@ const TextOutput = props => {
     const instructions = panel.recipe.instructions;
     const title = panel.recipe.title;
 
-    console.log("HERE I AM:", ingredientList);
+    // console.log("HERE I AM:", ingredientList);
     return {
       title: {
         content: (
@@ -97,11 +97,13 @@ const TextOutput = props => {
     }
   };
 
+  const fullPanels = panels.concat(addRecipePanel);
+
   return (
     <div className="output-container">
       <Accordion
         defaultActiveIndex={0}
-        panels={panels.concat(addRecipePanel)}
+        panels={fullPanels}
         styled
       />
     </div>

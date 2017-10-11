@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Header, Modal, Button } from "semantic-ui-react";
+import React from "react";
+import { Container, Header } from "semantic-ui-react";
 import AddForm from "./AddRecipeForm.js";
 
 const InputForm = props => {

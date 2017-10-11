@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import TextOutput from "./Components/TextOutput.js";
-import InputForm from "./Components/InputForm.js";
-// import { Modal, Button, Icon } from "semantic-ui-react";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +12,7 @@ class App extends Component {
         ingredients: [],
         instructions: ""
       },
-      ingredient: ""      
+      ingredient: ""
     };
   }
 
@@ -43,21 +41,34 @@ class App extends Component {
         ingredients: this.state.recipe.ingredients,
         instructions: this.state.recipe.instructions
       },
-      id: Date.now()
+      id: this.state.id || Date.now()
     };
 
     const stringifyNewRecipe = JSON.stringify(newRecipe);
     console.log("StringMe", stringifyNewRecipe);
     localStorage.setItem(newRecipe.id, stringifyNewRecipe);
 
-    this.setState(prevState => ({
-      recipeList: prevState.recipeList.concat([newRecipe]),
+    const localKeys = Object.keys(localStorage);
+    const restoredLocal = localKeys.map(item => {
+      return JSON.parse(localStorage.getItem(item));
+    });
+    this.setState({
+      recipeList: restoredLocal,
       recipe: {
         title: "",
         ingredients: [],
         instructions: ""
       }
-    }));
+    });
+
+    // this.setState(prevState => ({
+    //   recipeList: prevState.recipeList.concat([newRecipe]),
+    //   recipe: {
+    //     title: "",
+    //     ingredients: [],
+    //     instructions: ""
+    //   }
+    // }));
   };
 
   handleIngredientChange = e => {
@@ -118,20 +129,9 @@ class App extends Component {
         title: item.recipe.title,
         ingredients: item.recipe.ingredients,
         instructions: item.recipe.instructions
-      }
-    })
-    
-      // <InputForm
-      // //  open={this.state.inputModalOpen}
-      //   recipe={item.recipe}
-      //   ingredient={this.state.ingredient}
-      //   handleChange={this.handleChange}
-      //   handleSubmit={this.handleSubmit}
-      //   handleIngredientChange={this.handleIngredientChange}
-      //   handleIngredientSubmit={this.handleIngredientSubmit}
-      //   deleteItem={this.deleteItem}
-      // />
-    
+      },
+      id: item.id
+    });
   };
 
   onInputChange = newRecipe => {
@@ -145,8 +145,7 @@ class App extends Component {
     console.log("RecipeList:", this.state.recipeList);
     // console.log("Ingredient:", this.state.ingredient);
     // console.log("Ingredients:", this.state.recipe.ingredients);
-    console.log("LocalStorage:", localStorage);
-    console.log("inputModalOpen:", this.state.inputModalOpen);
+    console.log("LocalStorage:", localStorage);    
     return (
       <div className="App">
         <TextOutput
@@ -160,7 +159,7 @@ class App extends Component {
           deleteItem={this.deleteItem}
           deleteRecipe={this.deleteRecipe}
           editRecipe={this.editRecipe}
-        />        
+        />
       </div>
     );
   }
