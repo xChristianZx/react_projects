@@ -12,40 +12,13 @@ import {
 class AddIngredient extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ingredientsList: [],
-      ingredient: "",
+    this.state = {      
       modalOpen: false
     };
   }
   handleOpen = () => this.setState({ modalOpen: true });
 
   handleClose = () => this.setState({ modalOpen: false });
-
-  handleChange = e => {
-    console.log(e.target);
-    this.setState({
-      ingredient: e.target.value
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const newItem = {
-      ingredient: this.state.ingredient,
-      id: Date.now()
-    };
-    this.setState(prevState => ({
-      ingredientsList: prevState.ingredientsList.concat(newItem),
-      ingredient: ""
-    }));
-  };
-
-  deleteItem = (id) => {
-    this.setState(prevState => ({
-      ingredientsList: prevState.ingredientsList.filter(item => item.id !== id)
-    }));
-  };
 
   renderList = list => {
     const items = list.map(item => {
@@ -67,8 +40,7 @@ class AddIngredient extends Component {
     return <List as="ul">{items}</List>;
   };
 
-  render() {
-    //console.log('ingredientsList: ',this.state.ingredientsList);
+  render() {    
     return (
       <Modal
         trigger={<Button onClick={this.handleOpen}>Add Ingredients</Button>}

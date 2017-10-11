@@ -17,8 +17,9 @@ body {
 
 .App {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
   width: 95vw;
 }
 
@@ -73,13 +74,6 @@ i.dropdown.icon {
     }
   }
 }
-// .button {
-//   width: 10vw;
-// }
-// .button-ingredients {
-//   width: 2vw;
-// }
-
 .add-ingredients-list-container {
   display: flex;
   background-color: $primary-color;
@@ -111,18 +105,47 @@ i.dropdown.icon {
     color: white;
   }
 }
-.output-container {
+.recipe-accordion-container {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
+  align-items: center;
+  background-color: $primary-color-dark;
   box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.3);
-  width: 45vw;
+  width: 55vw;
+  min-height: 65vh;
   margin: 2rem;
-  // border: 1px solid black;
+  padding: 2.5rem 2rem;
   border-radius: 2rem;
-
-  div.accordion.title {
+}
+.ui.styled.accordion .title, .content  {
+  border: 1px solid $primary-color-dark;
+  background-color: $primary-color-light;
+  color: $primary-color-text;
+  &:hover {
     background-color: $primary-color;
+  }
+}
+
+.ui.styled.accordion:last-child .active.title {
+  background-color: $primary-color-light;
+  &:hover{
+    background-color: $primary-color-light;
+  }
+}
+
+.ui.button {
+  background-color: $accent-color;
+  color: $primary-text-color;
+  &:hover {
+    background-color: $primary-color-dark !important;    
+  }
+}
+
+i.icon {
+  background-color: transparent;
+  &:hover{
+    background-color: $primary-color-dark !important;
   }
 }
