@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import TextOutput from "./Components/TextOutput.js";
 import InputForm from "./Components/InputForm.js";
-import RecipeAccordion from "./Components/RecipeAccordion.js";
+// import { Modal, Button, Icon } from "semantic-ui-react";
 
 class App extends Component {
   constructor(props) {
@@ -14,8 +14,7 @@ class App extends Component {
         ingredients: [],
         instructions: ""
       },
-      ingredient: "",
-      inputModalOpen: false
+      ingredient: ""      
     };
   }
 
@@ -59,7 +58,6 @@ class App extends Component {
         instructions: ""
       }
     }));
-    // console.log("HandleSubmit", this.state.recipeList, this.state.recipe);
   };
 
   handleIngredientChange = e => {
@@ -115,16 +113,25 @@ class App extends Component {
     const item = JSON.parse(localStorage.getItem(id));
     console.log(item);
     console.log(e.target);
-    <InputForm
-      open={this.state.inputModalOpen}
-      recipe={item.recipe}
-      ingredient={this.state.ingredient}
-      handleChange={this.handleChange}
-      handleSubmit={this.handleSubmit}
-      handleIngredientChange={this.handleIngredientChange}
-      handleIngredientSubmit={this.handleIngredientSubmit}
-      deleteItem={this.deleteItem}
-    />;
+    this.setState({
+      recipe: {
+        title: item.recipe.title,
+        ingredients: item.recipe.ingredients,
+        instructions: item.recipe.instructions
+      }
+    })
+    
+      // <InputForm
+      // //  open={this.state.inputModalOpen}
+      //   recipe={item.recipe}
+      //   ingredient={this.state.ingredient}
+      //   handleChange={this.handleChange}
+      //   handleSubmit={this.handleSubmit}
+      //   handleIngredientChange={this.handleIngredientChange}
+      //   handleIngredientSubmit={this.handleIngredientSubmit}
+      //   deleteItem={this.deleteItem}
+      // />
+    
   };
 
   onInputChange = newRecipe => {
@@ -136,15 +143,15 @@ class App extends Component {
   render() {
     console.log("Recipe:", this.state.recipe);
     console.log("RecipeList:", this.state.recipeList);
-    console.log("Ingredient:", this.state.ingredient);
-    console.log("Ingredients:", this.state.recipe.ingredients);
+    // console.log("Ingredient:", this.state.ingredient);
+    // console.log("Ingredients:", this.state.recipe.ingredients);
     console.log("LocalStorage:", localStorage);
     console.log("inputModalOpen:", this.state.inputModalOpen);
     return (
       <div className="App">
         <TextOutput
           recipeList={this.state.recipeList}
-          recipe={this.state.recipe}          
+          recipe={this.state.recipe}
           ingredient={this.state.ingredient}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -152,27 +159,8 @@ class App extends Component {
           handleIngredientSubmit={this.handleIngredientSubmit}
           deleteItem={this.deleteItem}
           deleteRecipe={this.deleteRecipe}
-          editRecipe={this.editRecipe}          
-        />
-
-        {/* <InputForm
-          recipe={this.state.recipe}
-          ingredient={this.state.ingredient}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          handleIngredientChange={this.handleIngredientChange}
-          handleIngredientSubmit={this.handleIngredientSubmit}
-          deleteItem={this.deleteItem}
-        /> */}
-        {/* <RecipeAccordion
-          recipe={this.state.recipe}
-          ingredient={this.state.ingredient}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          handleIngredientChange={this.handleIngredientChange}
-          handleIngredientSubmit={this.handleIngredientSubmit}
-          deleteItem={this.deleteItem}
-        /> */}
+          editRecipe={this.editRecipe}
+        />        
       </div>
     );
   }

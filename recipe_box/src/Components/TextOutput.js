@@ -1,5 +1,5 @@
 import React from "react";
-import { Accordion, List, Button } from "semantic-ui-react";
+import { Accordion, Modal, List, Button } from "semantic-ui-react";
 import InputForm from "./InputForm";
 
 const TextOutput = props => {
@@ -27,13 +27,23 @@ const TextOutput = props => {
                 floated="right"
                 onClick={props.deleteRecipe.bind(this, panel.id)}
               />
-              <Button
-                circular
-                size="mini"
-                icon="edit"
-                floated="right"
-                onClick={props.editRecipe.bind(this, panel.id)}
-              />
+              <Modal
+                trigger={
+                  <Button onClick={props.editRecipe.bind(this, panel.id)} circular size="mini" icon="edit" floated="right" />
+                }
+                basic
+                size="small"
+              >
+                <InputForm
+                  recipe={props.recipe}
+                  ingredient={props.ingredient}
+                  handleChange={props.handleChange}
+                  handleSubmit={props.handleSubmit}
+                  handleIngredientChange={props.handleIngredientChange}
+                  handleIngredientSubmit={props.handleIngredientSubmit}
+                  deleteItem={props.deleteItem}
+                />
+              </Modal>
             </h3>
           </span>
         ),
@@ -57,16 +67,30 @@ const TextOutput = props => {
     title: {
       content: (
         <span className="accordion-title">
-          Click the button to add a recipe{" "}
-          <InputForm
-            recipe={props.recipe}
-            ingredient={props.ingredient}            
-            handleChange={props.handleChange}
-            handleSubmit={props.handleSubmit}
-            handleIngredientChange={props.handleIngredientChange}
-            handleIngredientSubmit={props.handleIngredientSubmit}
-            deleteItem={props.deleteItem}            
-          />
+          Add a recipe{" "}
+          <Modal
+            trigger={
+              <Button
+                className="input-form-modal-button"
+                icon="add"
+                size="mini"
+                circular
+                floated="right"
+              />
+            }
+            basic
+            size="small"
+          >
+            <InputForm
+              recipe={props.recipe}
+              ingredient={props.ingredient}
+              handleChange={props.handleChange}
+              handleSubmit={props.handleSubmit}
+              handleIngredientChange={props.handleIngredientChange}
+              handleIngredientSubmit={props.handleIngredientSubmit}
+              deleteItem={props.deleteItem}
+            />
+          </Modal>
         </span>
       ),
       key: `title-${panels.length + 1}`
