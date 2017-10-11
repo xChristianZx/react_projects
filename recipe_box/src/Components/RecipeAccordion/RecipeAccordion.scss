@@ -1,0 +1,47 @@
+$primary-color-dark: #0288d1;
+$primary-color: #03a9f4;
+$primary-color-light: #b3e5fc;
+$primary-color-text: #ffffff;
+$accent-color: #ffc107;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #bdbdbd;
+
+.recipe-accordion-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.3);
+  width: 55vw;
+  min-height: 65vh;
+  margin: 2rem;
+  padding: 2.5rem 2rem;
+  border-radius: 2rem;
+}
+
+.ui.styled.accordion .title,
+.content {
+  border: 1px solid $divider-color;
+  background-color: white;
+  color: $primary-text-color;
+  &:hover {
+    background-color: $primary-color-light;
+  }
+}
+
+.accordion-add-recipe-title {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & button {
+    margin-left: 1em !important;
+  }
+}
+
+i.dropdown.icon {
+  opacity: 0 !important;
+}

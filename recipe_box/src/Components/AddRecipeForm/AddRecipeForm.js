@@ -1,6 +1,7 @@
 import React from "react";
+import './AddRecipeForm.css';
 import { Form, Button } from "semantic-ui-react";
-import AddIngredient from "./AddIngredient.js";
+import AddIngredient from "../AddIngredient/AddIngredient";
 
 const AddForm = props => {
   return (

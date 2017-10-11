@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import './RecipeAccordion.css';
 import { Accordion, Modal, List, Button } from "semantic-ui-react";
-import InputForm from "./InputForm";
+import InputForm from "../InputForm/InputForm";
 
 class RecipeAccordion extends Component {
   constructor() {
@@ -202,7 +203,7 @@ class RecipeAccordion extends Component {
     const addRecipePanel = {
       title: {
         content: (
-          <span className="accordion-title">
+          <span className="accordion-add-recipe-title">
             Add a recipe{" "}
             <Modal
               trigger={

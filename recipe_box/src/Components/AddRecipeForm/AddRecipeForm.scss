@@ -1,0 +1,28 @@
+$primary-color-dark: #0288d1;
+$primary-color: #03a9f4;
+$primary-color-light: #b3e5fc;
+$primary-color-text: #ffffff;
+$accent-color: #ffc107;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #bdbdbd;
+
+.form-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 1em;
+}
+
+.ui.form .field > label {
+  color: $primary-color-text;
+  font-size: 1.2rem;
+  padding: .5rem;
+}
+
+.modal-open-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 2em;
+}

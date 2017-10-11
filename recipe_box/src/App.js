@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
-import RecipeAccordion from "./Components/RecipeAccordion.js";
+import RecipeAccordion from "./Components/RecipeAccordion/RecipeAccordion";
 
 class App extends Component {
   render() {

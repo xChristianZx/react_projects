@@ -1,0 +1,35 @@
+$primary-color-dark: #0288d1;
+$primary-color: #03a9f4;
+$primary-color-light: #b3e5fc;
+$primary-color-text: #ffffff;
+$accent-color: #ffc107;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #bdbdbd;
+
+.form-container-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  width: 45vw;
+  margin: 2rem;
+  .header {
+    color: white;
+    background-color: $primary-color;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: auto;
+  background-color: $primary-color;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 45vw;
+  .button {
+    background-color: $accent-color;
+    color: $primary-text-color;
+  }
+}

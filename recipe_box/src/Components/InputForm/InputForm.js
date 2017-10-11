@@ -1,6 +1,7 @@
 import React from "react";
+import './InputForm.css';
 import { Container, Header } from "semantic-ui-react";
-import AddForm from "./AddRecipeForm.js";
+import AddForm from "../AddRecipeForm/AddRecipeForm";
 
 const InputForm = props => {
   return (
