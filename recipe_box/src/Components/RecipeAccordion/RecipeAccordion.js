@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './RecipeAccordion.css';
+import "./RecipeAccordion.css";
 import { Accordion, Modal, List, Button } from "semantic-ui-react";
 import InputForm from "../InputForm/InputForm";
 

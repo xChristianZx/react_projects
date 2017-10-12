@@ -24,8 +24,8 @@ class AddIngredient extends Component {
   renderList = list => {
     const items = list.map(item => {
       return (
-        <div key={item.id}>
-          <List.Item as="li" className="ingredient-list-item" floated="left">
+        <div  className="ingredient-list-item" key={item.id}>
+          <List.Item as="li" floated="left">
             {item.ingredient}
             <Button
               circular
@@ -59,7 +59,7 @@ class AddIngredient extends Component {
             <Header content="Ingredients" as="h2" textAlign="center" dividing />
             <Modal.Content>
               {this.renderList(this.props.recipe.ingredients)}
-              <Form onSubmit={this.props.handleIngredientSubmit}>
+              <Form className='add-ingredients-form' onSubmit={this.props.handleIngredientSubmit}>
                 <Form.Group>
                   <Form.Input
                     name="ingredients"
