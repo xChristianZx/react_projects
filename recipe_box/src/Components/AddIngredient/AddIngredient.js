@@ -38,26 +38,26 @@ class AddIngredient extends Component {
         </div>
       );
     });
-    return <List as="ul">{items}</List>;
+    return (
+      <div className="ingredient-list-item-wrapper">
+        <List as="ul">{items}</List>
+      </div>
+    );
   };
 
   render() {
     return (
-      <div className='add-ingredients-modal-container'>
+      <div className="add-ingredients-modal-container">
         <Modal
           trigger={<Button onClick={this.handleOpen}>Add Ingredients</Button>}
           open={this.state.modalOpen}
           onClose={this.handleClose}
           size="small"
+          basic
         >
           <Container className="add-ingredients-list-container" text>
+            <Header content="Ingredients" as="h2" textAlign="center" dividing />
             <Modal.Content>
-              <Header
-                content="Ingredients"
-                as="h2"
-                textAlign="center"
-                dividing
-              />
               {this.renderList(this.props.recipe.ingredients)}
               <Form onSubmit={this.props.handleIngredientSubmit}>
                 <Form.Group>

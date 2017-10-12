@@ -1,7 +1,7 @@
 import React from "react";
 import './InputForm.css';
 import { Container, Header } from "semantic-ui-react";
-import AddForm from "../AddRecipeForm/AddRecipeForm";
+import AddRecipeForm from "../AddRecipeForm/AddRecipeForm";
 
 const InputForm = props => {
   return (
@@ -10,7 +10,7 @@ const InputForm = props => {
         <Header as="h2" dividing>
           Add Recipe
         </Header>
-        <AddForm
+        <AddRecipeForm
           recipe={props.recipe}
           ingredient={props.ingredient}
           handleChange={props.handleChange}

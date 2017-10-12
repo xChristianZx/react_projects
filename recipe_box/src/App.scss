@@ -16,6 +16,7 @@ $primary-color: #03a9f4;
 $primary-color-light: #b3e5fc;
 $primary-color-text: #ffffff;
 $accent-color: #ffc107;
+$secondary-accent-color: #ff9800;
 $primary-text-color: #212121;
 $secondary-text-color: #757575;
 $divider-color: #bdbdbd;
@@ -39,13 +40,13 @@ body {
   background-color: #ffc107;
   color: $primary-text-color;
   &:hover {
-    background-color: $primary-color-dark !important;    
+    background-color: $secondary-accent-color !important;    
   }
 }
 
 i.icon {
   background-color: transparent;
   &:hover{
-    background-color: $primary-color-dark !important;
+    background-color: $secondary-accent-color !important;
   }
 }

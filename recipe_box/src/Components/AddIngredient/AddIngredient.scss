@@ -8,18 +8,25 @@ $secondary-text-color: #757575;
 $divider-color: #bdbdbd;
 
 .add-ingredients-modal-container {
-    background-color: $primary-color;
+  background-color: $primary-color;
 }
 
 .add-ingredients-list-container {
   display: flex;
   background-color: $primary-color;
-  border: 1px solid lightgray;
-  border-radius: 1em;
+  border-radius: 2rem;
   color: black;
-  padding: 1em 2em;
-  margin: 0;
-  // min-height: 50vh;
+  padding: 2rem;
+  margin: auto;
+  .header {
+    background-color: $primary-color;
+    color: $primary-color-text;
+    padding: 1rem;
+  }
+}
+
+.ingredient-list-item-wrapper {
+  padding: .5rem;
 }
 
 .ingredient-list-item {
@@ -31,8 +38,9 @@ $divider-color: #bdbdbd;
   justify-content: flex-end;
   align-content: flex-end;
   margin: auto;
+  padding: .75rem 0;
   .button {
     background-color: $accent-color;
-    color: white;
+    color: $primary-text-color;
   }
 }

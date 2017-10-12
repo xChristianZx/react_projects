@@ -15,7 +15,7 @@ $divider-color: #bdbdbd;
   width: 45vw;
   margin: 2rem;
   .header {
-    color: white;
+    color: $primary-color-text;
     background-color: $primary-color;
   }
 }

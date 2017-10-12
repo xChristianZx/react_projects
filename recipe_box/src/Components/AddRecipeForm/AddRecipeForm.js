@@ -3,7 +3,7 @@ import './AddRecipeForm.css';
 import { Form, Button } from "semantic-ui-react";
 import AddIngredient from "../AddIngredient/AddIngredient";
 
-const AddForm = props => {
+const AddRecipeForm = props => {
   return (
     <div>
       <Form
@@ -56,4 +56,4 @@ const AddForm = props => {
   );
 };
 
-export default AddForm;
+export default AddRecipeForm;
