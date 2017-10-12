@@ -35,6 +35,9 @@ class RecipeAccordion extends Component {
   };
 
   handleSubmit = e => {
+    if (this.state.recipe.title === "" || this.state.recipe.title === null) {
+      return -1;
+    }
     e.preventDefault();
     let newRecipe = {
       recipe: {
