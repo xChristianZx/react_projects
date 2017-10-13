@@ -25,7 +25,9 @@ body {
   width: 95vw;
   height: 100vh; 
 }
-
+.ui.styled.accordion, .ui.styled.accordion .accordion {
+  margin: 2.5rem 1rem;
+}
 .ui.button {
   background-color: #ffc107;
   color: $primary-text-color;

@@ -16,7 +16,7 @@ $divider-color: #bdbdbd;
   background-color: $primary-color;
   box-shadow: 0 10px 10px -6px rgba(0, 0, 0, 0.3);
   width: 55vw;
-  min-height: 65vh;
+  // min-height: 65vh;
   margin: 2rem;
   padding: 2.5rem 2rem;
   border-radius: 2rem;
@@ -37,7 +37,7 @@ $divider-color: #bdbdbd;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
+  color: $secondary-text-color;
   & button {
     margin-left: 1em !important;
   }

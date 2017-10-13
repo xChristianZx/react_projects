@@ -13,6 +13,7 @@ class RecipeAccordion extends Component {
         ingredients: [],
         instructions: ""
       },
+      id: null,
       ingredient: ""
     };
   }
@@ -35,6 +36,7 @@ class RecipeAccordion extends Component {
   };
 
   handleSubmit = e => {
+    /* Prevent submission of empty recipes */
     if (this.state.recipe.title === "" || this.state.recipe.title === null) {
       return -1;
     }
@@ -47,32 +49,27 @@ class RecipeAccordion extends Component {
       },
       id: this.state.id || Date.now()
     };
-
+    
+    /* adding newRecipe to local storage */
     const stringifyNewRecipe = JSON.stringify(newRecipe);
     console.log("StringMe", stringifyNewRecipe);
     localStorage.setItem(newRecipe.id, stringifyNewRecipe);
-
+    
+    /* grabbing localStorage, setting to recipeList state, and resetting recipe object state */
     const localKeys = Object.keys(localStorage);
     const restoredLocal = localKeys.map(item => {
       return JSON.parse(localStorage.getItem(item));
     });
+
     this.setState({
       recipeList: restoredLocal,
       recipe: {
         title: "",
         ingredients: [],
         instructions: ""
-      }
+      },
+      id: null
     });
-
-    // this.setState(prevState => ({
-    //   recipeList: prevState.recipeList.concat([newRecipe]),
-    //   recipe: {
-    //     title: "",
-    //     ingredients: [],
-    //     instructions: ""
-    //   }
-    // }));
   };
 
   handleIngredientChange = e => {
@@ -80,6 +77,7 @@ class RecipeAccordion extends Component {
   };
 
   handleIngredientSubmit = e => {
+    /** Prevent empty submission **/
     if (this.state.ingredient === "" || this.state.ingredient === null) {
       return -1;
     }
@@ -126,7 +124,7 @@ class RecipeAccordion extends Component {
 
   editRecipe = (id, e) => {
     const item = JSON.parse(localStorage.getItem(id));
-    console.log(item);
+    console.log('Edit Recipe', item);
     this.setState({
       recipe: {
         title: item.recipe.title,
@@ -138,6 +136,7 @@ class RecipeAccordion extends Component {
   };
 
   renderPanels = () => {
+    /* renders according panels for accordion component shorthand */
     if (!this.state.recipeList) {
       return;
     }
@@ -243,12 +242,13 @@ class RecipeAccordion extends Component {
   };
 
   render() {
-    console.log("Recipe:", this.state.recipe);
-    console.log("RecipeList:", this.state.recipeList);
-    // // console.log("Ingredient:", this.state.ingredient);
-    // // console.log("Ingredients:", this.state.recipe.ingredients);
+    console.log("State:", this.state);
+    // console.log("Recipe:", this.state.recipe);
+    // console.log("RecipeList:", this.state.recipeList);
+    // console.log("Ingredient:", this.state.ingredient);
+    // console.log("Ingredients:", this.state.recipe.ingredients);
     console.log("LocalStorage:", localStorage);
-    console.log("renderPanels", this.renderPanels());
+    // console.log("renderPanels", this.renderPanels());
 
     return (
       <div className="recipe-accordion-container">

@@ -12,8 +12,8 @@ $divider-color: #bdbdbd;
   flex-flow: column nowrap;
   justify-content: center;
   align-content: center;
-  width: 45vw;
-  margin: 2rem;
+  width: 55vw;
+  margin: 1rem;
   .header {
     color: $primary-color-text;
     background-color: $primary-color;
@@ -27,7 +27,7 @@ $divider-color: #bdbdbd;
   background-color: $primary-color;
   padding: 2rem;
   border-radius: 2rem;
-  width: 45vw;
+  width: 55vw;
   .button {
     background-color: $accent-color;
     color: $primary-text-color;
