@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import './MarketChart.css';
+import "./MarketChart.css";
 import Axios from "axios";
-import PieChart from './VCharts';
+import PieChart from "./VCharts";
 
 class MarketChart extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class MarketChart extends Component {
   componentDidMount = () => {
     this.setTime();
   };
-
+  
   setTime = () => {
     /*GDAX API requires UTC time */
     const date = new Date();
@@ -31,26 +31,24 @@ class MarketChart extends Component {
     const marketOpenDate = `${year}-${month}-${day}T00:00:00Z`;
     const currentUTCDate = currentTimeIso;
 
-    console.log("Current Time:", currentTime, "\nCurrentIso", currentTimeIso);
-    console.log("currentUTCDate", currentUTCDate, typeof currentUTCDate);
-    console.log("previousUTCDate", marketOpenDate, typeof marketOpenDate);
+    console.log("Current Time: ", currentTime, "\nCurrentIso: ", currentTimeIso);
+    console.log("currentUTCDate: ", currentUTCDate, typeof currentUTCDate);
+    console.log("previousUTCDate: ", marketOpenDate, typeof marketOpenDate);
 
     this.setState({
       marketOpen: marketOpenDate,
       currentDateTime: currentUTCDate
-    });
-
-    if (this.state.currentDateTime !== null) {
-      this.getData();
-    } else {
-      setTimeout(this.getData, 1000);
-    }
+    }, () => this.getData());    
   };
 
   getData = () => {
     const GDAX_Endpoint = "https://api.gdax.com";
 
-    /*https://docs.gdax.com/?javascript#get-historic-rates*/
+    /* https://docs.gdax.com/?javascript#get-historic-rates */
+    /*
+          RESPONSE FORMAT
+    [time,low, high, open, close, volume]
+    */
 
     Axios.get("/products/BTC-USD/candles", {
       baseURL: GDAX_Endpoint,
@@ -61,7 +59,7 @@ class MarketChart extends Component {
       }
     })
       .then(response => {
-        console.log("Historic Rates: ", response.data[0]);
+        // console.log("Historic Rates[0]: ", response.data[0]);
         this.setState({
           marketData: response.data
         });
@@ -74,7 +72,9 @@ class MarketChart extends Component {
     console.log("marketData[0]", this.state.marketData[0]);
     return (
       <div className="temp-container">
-        <div className="market-chart-item"><PieChart /></div>
+        <div className="market-chart-item">
+          <PieChart data={this.state.marketData}/>
+        </div>
       </div>
     );
   }
