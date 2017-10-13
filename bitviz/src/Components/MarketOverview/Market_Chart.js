@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import './MarketChart.css';
 import Axios from "axios";
+import PieChart from './VCharts';
 
 class MarketChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       marketOpen: null,
-      currentDateTime: null
+      currentDateTime: null,
+      marketData: []
     };
   }
 
@@ -15,7 +18,7 @@ class MarketChart extends Component {
   };
 
   setTime = () => {
-    /*API requires UTC time */
+    /*GDAX API requires UTC time */
     const date = new Date();
     const currentTime = new Date(date);
     const currentTimeIso = currentTime.toISOString();
@@ -28,12 +31,7 @@ class MarketChart extends Component {
     const marketOpenDate = `${year}-${month}-${day}T00:00:00Z`;
     const currentUTCDate = currentTimeIso;
 
-    console.log(
-      "Current Time:",
-      currentTime,      
-      "\nCurrentIso",
-      currentTimeIso,
-    );
+    console.log("Current Time:", currentTime, "\nCurrentIso", currentTimeIso);
     console.log("currentUTCDate", currentUTCDate, typeof currentUTCDate);
     console.log("previousUTCDate", marketOpenDate, typeof marketOpenDate);
 
@@ -51,25 +49,32 @@ class MarketChart extends Component {
 
   getData = () => {
     const GDAX_Endpoint = "https://api.gdax.com";
-    
+
     /*https://docs.gdax.com/?javascript#get-historic-rates*/
-    
+
     Axios.get("/products/BTC-USD/candles", {
       baseURL: GDAX_Endpoint,
       params: {
-        start: this.state.marketOpen, //"2017-09-17T00:00:00Z",
-        end: this.state.currentDateTime, //"2017-09-17T20:03:28Z",
-        granularity: "600" //10 minutes
+        start: this.state.marketOpen /* "2017-09-17T00:00:00Z" */,
+        end: this.state.currentDateTime /* "2017-09-17T20:03:28Z"*/,
+        granularity: "600" /* 10 minutes */
       }
     })
-      .then(response => console.log("Historic Rates: ", response))
+      .then(response => {
+        console.log("Historic Rates: ", response.data[0]);
+        this.setState({
+          marketData: response.data
+        });
+      })
       .catch(err => console.log("ERROR: ", err));
   };
 
   render() {
+    console.log("marketData", this.state.marketData);
+    console.log("marketData[0]", this.state.marketData[0]);
     return (
       <div className="temp-container">
-        <div className="market-chart-item">Market Data Here!</div>
+        <div className="market-chart-item"><PieChart /></div>
       </div>
     );
   }

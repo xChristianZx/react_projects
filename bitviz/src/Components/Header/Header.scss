@@ -1,0 +1,14 @@
+.header-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: flex-start;
+    text-align: left;
+    margin: auto;
+  }
+  
+  .header-text {
+    margin: 3px 10px;
+    padding: 5px 10px;
+    width: 80%;
+  }

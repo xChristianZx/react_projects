@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Components/header.js';
-import Navbar from './Components/navbar.js';
-import MarketChart from './Components/market_chart.js';
+import Header from './Components/Header/Header';
+import Navbar from './Components/Navbar/Navbar';
+import MarketChart from './Components/MarketOverview/Market_Chart';
 
 class App extends Component {
   render() {
