@@ -22,40 +22,42 @@ class MarketChart extends Component {
     const date = new Date();
     const currentTime = new Date(date);
     const currentTimeIso = currentTime.toISOString();
+    /**This removes the sec & ms off of the ISOstring so that GDAX returns the timeframe request as requested */
+    const currentUTCDate = currentTimeIso.split('').slice(0,16).join('');
+    const reformatUTCDate = `${currentUTCDate}Z`;
+    
     const pad = num => (num < 10 ? "0" + num : num);
-
     const year = date.getUTCFullYear();
     const month = pad(date.getUTCMonth() + 1);
     const day = pad(date.getUTCDate());
 
-    const marketOpenDate = `${year}-${month}-${day}T00:00:00Z`;
-    const currentUTCDate = currentTimeIso;
+    const marketOpenDate = `${year}-${month}-${day}T00:00:00.000Z`;
 
     console.log("Current Time: ", currentTime, "\nCurrentIso: ", currentTimeIso);
-    console.log("currentUTCDate: ", currentUTCDate, typeof currentUTCDate);
-    console.log("previousUTCDate: ", marketOpenDate, typeof marketOpenDate);
+    console.log("MarketOpenUTCDate: ", marketOpenDate, typeof marketOpenDate);
+    console.log("currentUTCDate:    ", reformatUTCDate, typeof currentUTCDate);
 
     this.setState({
       marketOpen: marketOpenDate,
-      currentDateTime: currentUTCDate
+      currentDateTime: reformatUTCDate
     }, () => this.getData());    
   };
 
   getData = () => {
-    const GDAX_Endpoint = "https://api.gdax.com";
-
+    
     /* https://docs.gdax.com/?javascript#get-historic-rates */
     /*
-          RESPONSE FORMAT
-    [time,low, high, open, close, volume]
+      RESPONSE FORMAT - [time,low, high, open, close, volume]
     */
-
+    
+    const GDAX_Endpoint = "https://api.gdax.com";
+    
     Axios.get("/products/BTC-USD/candles", {
       baseURL: GDAX_Endpoint,
       params: {
-        start: this.state.marketOpen /* "2017-09-17T00:00:00Z" */,
-        end: this.state.currentDateTime /* "2017-09-17T20:03:28Z"*/,
-        granularity: "600" /* 10 minutes */
+        start: this.state.marketOpen ,   /* "2017-09-17T00:00:00Z" */
+        end: this.state.currentDateTime, /* "2017-09-17T20:03:28Z" */
+        granularity: '900', /* 60sec * (desired timeframe in minutes) */
       }
     })
       .then(response => {
@@ -68,14 +70,16 @@ class MarketChart extends Component {
   };
 
   render() {
-    console.log("marketData", this.state.marketData);
+    console.log('TEST1: ', this.state.marketOpen);
+    console.log('TEST2: ', this.state.currentDateTime);
+    console.table(this.state.marketData);
     console.log("marketData[0]", this.state.marketData[0]);
     return (
-      <div className="temp-container">
+      // <div className="temp-container">
         <div className="market-chart-item">
           <PieChart data={this.state.marketData}/>
         </div>
-      </div>
+      // </div>
     );
   }
 }
