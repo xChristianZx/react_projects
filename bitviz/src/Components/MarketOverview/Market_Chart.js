@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./MarketChart.css";
 import Axios from "axios";
-import PieChart from "./VCharts";
+import CandleCharts from "./VCharts";
 
 class MarketChart extends Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class MarketChart extends Component {
     return (
       // <div className="temp-container">
       <div className="market-chart-item">
-        <PieChart data={this.state.marketData} />
+        <CandleCharts data={this.state.marketData} />
       </div>
       // </div>
     );

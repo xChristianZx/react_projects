@@ -7,7 +7,7 @@ import {
   VictoryLine
 } from "victory";
 
-class PieChart extends Component {
+class CandleCharts extends Component {
   /*
           RESPONSE FORMAT
     [time,low, high, open, close, volume]
@@ -35,18 +35,17 @@ class PieChart extends Component {
 
     const reformatSlice = reformatData.slice(0, 29);
     const lastCloseY = reformatSlice[0].close;
-
-    const dLine = reformatSlice.map(item => {
-      return { x: item.x, y: lastCloseY}
-    })
-
     const lastCloseX0 = reformatSlice[28].x;
     const lastCloseX1 = reformatSlice[0].x;
+
+    const dLine = reformatSlice.map(item => {
+      return { x: item.x, y: lastCloseY };
+    });
 
     console.log("reformatSlice: ", reformatSlice);
     console.log("lastCloseX0: ", lastCloseX0);
     console.log("lastCloseX1: ", lastCloseX1);
-    console.log("DLINE: ", dLine);
+    // console.log("DLINE: ", dLine);
 
     return (
       <VictoryChart
@@ -57,18 +56,28 @@ class PieChart extends Component {
         height={800}
         width={1200}
       >
-        <VictoryAxis fixLabelOverlap={true} />
-        <VictoryAxis orientation="right" offsetX={50} dependentAxis />
+        <VictoryAxis
+          fixLabelOverlap={true}
+          style={{ tickLabels: { fontSize: 16, padding: 5 } }}          
+        />
+        <VictoryAxis
+          orientation="right"
+          offsetX={50}
+          tickCount={8}
+          style={{ tickLabels: { fontSize: 16, padding: 5 } }}
+          dependentAxis
+        />
         <VictoryLine
           data={dLine}
           style={{
             data: {
-              stroke: 'red', strokeOpacity: .20
+              stroke: "red",
+              strokeOpacity: 0.2
             }
           }}
-        /> 
+        />
         <VictoryCandlestick
-          candleColors={{ positive: "#5f5c5b", negative: "#c43a31" }}
+          candleColors={{ positive: "green", negative: "#c43a31" }}
           data={reformatSlice}
         />
       </VictoryChart>
@@ -76,12 +85,4 @@ class PieChart extends Component {
   }
 }
 
-export default PieChart;
-
-// [
-//   { x: new Date(2016, 6, 1), open: 5, close: 10, high: 15, low: 0 },
-//   { x: new Date(2016, 6, 2), open: 10, close: 15, high: 20, low: 5 },
-//   { x: new Date(2016, 6, 3), open: 15, close: 20, high: 22, low: 10 },
-//   { x: new Date(2016, 6, 4), open: 20, close: 10, high: 25, low: 7 },
-//   { x: new Date(2016, 6, 5), open: 10, close: 8, high: 15, low: 5 }
-// ]
+export default CandleCharts;
