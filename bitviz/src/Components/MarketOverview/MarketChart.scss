@@ -5,11 +5,13 @@
     align-content: center;
     border: 1px solid black;
     margin: 5px;
+    height: 50vh;    
   }
   
   .market-chart-item {
     border: 1px solid grey;
-    height: 200px;
-    width: 300px;
+    height: 75vh;
+    width: 75vh;
     margin: auto;
+    padding: 1rem 2rem;
   }
