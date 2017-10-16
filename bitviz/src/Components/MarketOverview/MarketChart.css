@@ -1,15 +1,17 @@
-.temp-container {
+.market-overview-container {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: center;
+  align-items: center;
   border: 1px solid black;
   margin: 5px;
-  height: 50vh; }
+  padding: .5rem;
+  height: 40vh;
+  width: 80vw; }
 
 .market-chart-item {
-  border: 1px solid grey;
-  height: 75vh;
-  width: 75vh;
-  margin: auto;
-  padding: 1rem 2rem; }
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: .5rem 0; }

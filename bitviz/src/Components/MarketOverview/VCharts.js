@@ -48,24 +48,25 @@ class CandleCharts extends Component {
 
     return (
       <VictoryChart
-        animate={{ duration: 4000 }}
+        animate={{ duration: 2000 }}
         theme={VictoryTheme.material}
         padding={50}
         domainPadding={{ x: [15, 50], y: 50 }}
         scale={{ x: "time" }}
-        height={800}
-        width={1200}
+        height={250}
+        width={500}
       >
         {/* X-Axis */}
         <VictoryAxis
           fixLabelOverlap={true}
           style={{
             grid: { stroke: "grey", strokeWidth: 1, strokeOpacity: 0.25 },
-            tickLabels: { fontSize: 16, padding: 5 }
+            tickLabels: { fontSize: 10, padding: 5 }
           }}
         />
         {/* Y-Axis */}
         <VictoryAxis
+          fixLabelOverlap={true}
           orientation="right"
           offsetX={50}
           tickCount={8}
@@ -76,12 +77,13 @@ class CandleCharts extends Component {
           dependentAxis
         />
         <VictoryLine
-          data={dLine}          
+          data={dLine}
           style={{
             data: {
               stroke: "red",
               strokeOpacity: 0.4,
-              strokeDasharray: "10,10"
+              strokeDasharray: "10,10",
+              strokeWidth: 1,
             }
           }}
         />
