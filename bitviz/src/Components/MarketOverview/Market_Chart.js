@@ -9,7 +9,7 @@ class MarketChart extends Component {
     this.state = {
       marketOpen: null,
       currentDateTime: null,
-      marketData: []
+      marketDataBTCUSD: []
     };
   }
 
@@ -65,7 +65,7 @@ class MarketChart extends Component {
       .then(response => {
         // console.log("Historic Rates[0]: ", response.data[0]);
         this.setState({
-          marketData: response.data
+          marketDataBTCUSD: response.data
         });
       })
       .catch(err => console.log("ERROR: ", err));
@@ -73,11 +73,11 @@ class MarketChart extends Component {
 
   render() {  
     // console.table(this.state.marketData);
-    console.log("marketData[0]", this.state.marketData[0]);
+    console.log("marketData[0]", this.state.marketDataBTCUSD[0]);
     return (
       // <div className="temp-container">
       <div className="market-chart-item">
-        <CandleCharts data={this.state.marketData} />
+        <CandleCharts data={this.state.marketDataBTCUSD} />
       </div>
       // </div>
     );
