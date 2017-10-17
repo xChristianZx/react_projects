@@ -4,7 +4,9 @@ import {
   VictoryAxis,
   VictoryCandlestick,
   VictoryTheme,
-  VictoryLine
+  VictoryLine,
+  VictoryLabel,
+  VictoryBar
 } from "victory";
 
 class CandleCharts extends Component {
@@ -14,7 +16,7 @@ class CandleCharts extends Component {
     */
 
   render() {
-    /*Converts Epoch unix time to local time and then creates an OHLC object for VCharts*/
+    /* Converts Epoch unix time to local time and then creates an OHLC object for VCharts */
     if (!this.props.data.length > 0) {
       return null;
     }
@@ -38,6 +40,13 @@ class CandleCharts extends Component {
     // const lastCloseX0 = reformatSlice[28].x;
     // const lastCloseX1 = reformatSlice[0].x;
 
+    const test = () =>
+      !this.props.data.length > 0
+        ? null
+        : this.props.data.map(item => Math.round(item[5]));
+
+    const testSlice = test().slice(0, 29);
+
     const dLine = reformatSlice.map(item => {
       return { x: item.x, y: lastCloseY };
     });
@@ -51,11 +60,14 @@ class CandleCharts extends Component {
         animate={{ duration: 2000 }}
         theme={VictoryTheme.material}
         padding={50}
-        domainPadding={{ x: [15, 50], y: 50 }}
+        domainPadding={{ x: [5, 5], y: 25 }}
         scale={{ x: "time" }}
-        height={250}
+        height={350}
         width={500}
       >
+        <VictoryLabel x={50} y={20} text={this.props.label} />
+        <VictoryLabel x={400} y={20} text={`$${lastCloseY}`} />
+
         {/* X-Axis */}
         <VictoryAxis
           fixLabelOverlap={true}
@@ -70,6 +82,7 @@ class CandleCharts extends Component {
           orientation="right"
           offsetX={50}
           tickCount={8}
+          tickFormat={(d)=> `$${d}`}
           style={{
             grid: { stroke: "grey", strokeWidth: 1, strokeOpacity: 0.35 },
             tickLabels: { fontSize: 16, padding: 5 }
@@ -83,10 +96,11 @@ class CandleCharts extends Component {
               stroke: "red",
               strokeOpacity: 0.4,
               strokeDasharray: "10,10",
-              strokeWidth: 1,
+              strokeWidth: 1
             }
           }}
         />
+        {/* <VictoryBar standalone style={{ data: { fill: "#c43a31" } }} data={testSlice} /> */}
         <VictoryCandlestick
           candleColors={{ positive: "green", negative: "#c43a31" }}
           data={reformatSlice}

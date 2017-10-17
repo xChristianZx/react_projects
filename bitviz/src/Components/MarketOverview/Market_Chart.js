@@ -82,6 +82,12 @@ class MarketChart extends Component {
   };
 
   getAllData = () => {
+    
+    /* https://docs.gdax.com/?javascript#get-historic-rates */
+    /*
+      RESPONSE FORMAT - [time,low, high, open, close, volume]
+    */
+
     const GDAX_Endpoint = "https://api.gdax.com/products";
     const params = {
       baseURL: GDAX_Endpoint,
@@ -118,13 +124,13 @@ class MarketChart extends Component {
     return (
       <div className="market-overview-container">
         <div className="market-chart-item">
-          <CandleCharts data={this.state.marketDataBTCUSD} />          
+          <CandleCharts label={"BTC/USD"} data={this.state.marketDataBTCUSD} />
         </div>
         <div className="market-chart-item">
-          <CandleCharts data={this.state.marketDataETHUSD} />
+          <CandleCharts label={"ETH/USD"} data={this.state.marketDataETHUSD} />
         </div>
         <div className="market-chart-item">
-          <CandleCharts data={this.state.marketDataLTCUSD} />
+          <CandleCharts label={"LTC/USD"} data={this.state.marketDataLTCUSD} />
         </div>
       </div>
     );
