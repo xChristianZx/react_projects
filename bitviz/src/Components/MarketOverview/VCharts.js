@@ -66,14 +66,14 @@ class CandleCharts extends Component {
         width={500}
       >
         <VictoryLabel x={50} y={20} text={this.props.label} />
-        <VictoryLabel x={400} y={20} text={`$${lastCloseY}`} />
+        <VictoryLabel x={375} y={20} text={`$${lastCloseY}`} />
 
         {/* X-Axis */}
         <VictoryAxis
           fixLabelOverlap={true}
           style={{
             grid: { stroke: "grey", strokeWidth: 1, strokeOpacity: 0.25 },
-            tickLabels: { fontSize: 10, padding: 5 }
+            tickLabels: { fontSize: 12, padding: 5 }
           }}
         />
         {/* Y-Axis */}
@@ -85,7 +85,7 @@ class CandleCharts extends Component {
           tickFormat={(d)=> `$${d}`}
           style={{
             grid: { stroke: "grey", strokeWidth: 1, strokeOpacity: 0.35 },
-            tickLabels: { fontSize: 16, padding: 5 }
+            tickLabels: { fontSize: 16, padding: 0 }
           }}
           dependentAxis
         />
