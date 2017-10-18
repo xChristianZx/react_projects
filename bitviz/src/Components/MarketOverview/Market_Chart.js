@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./MarketChart.css";
 import Axios from "axios";
 import CandleCharts from "./VCharts";
+import moment from "moment";
 
 class MarketChart extends Component {
   constructor(props) {
@@ -9,21 +10,37 @@ class MarketChart extends Component {
     this.state = {
       marketOpen: null,
       currentDateTime: null,
+      prevDayCloseStart: null,
+      prevDayCloseEnd: null,
       marketDataBTCUSD: [],
       marketDataETHUSD: [],
-      marketDataLTCUSD: []
+      marketDataLTCUSD: [],
+      priorCloseBTCUSD: null,
+      priorCloseETHUSD: null,
+      priorCloseLTCUSD: null,
     };
   }
-
+  //#region methods
   componentDidMount = () => {
     this.setTime();
   };
 
   setTime = () => {
-    /*GDAX API requires UTC time in ISO */
-    const date = new Date();
-    const currentTime = new Date(date);
-    const currentTimeIso = currentTime.toISOString();
+    /*GDAX API requires UTC time in ISO 8601 */
+    const date = moment();
+    const currentTimeLocal = moment(date).format();
+    const currentTimeIso = moment().toISOString();
+
+    const prevDay = moment()
+      .subtract(1, "day")
+      .format("YYYY-MM-DD");
+    console.log("PrevDay: ", prevDay);
+
+    const prevDayCloseStart = `${prevDay}T23:49:00Z`;
+    const prevDayCloseEnd = `${prevDay}T23:59:59Z`;
+    console.log("prevDayCloseStart: ", prevDayCloseStart);
+    console.log("prevDayCloseEnd: ", prevDayCloseEnd);
+
     /*This removes the sec & ms off of the ISOstring so that GDAX returns the timeframe request as requested */
     const currentUTCDate = currentTimeIso
       .split("")
@@ -32,57 +49,70 @@ class MarketChart extends Component {
     const reformatUTCDate = `${currentUTCDate}Z`;
 
     const pad = num => (num < 10 ? "0" + num : num);
-    const year = date.getUTCFullYear();
-    const month = pad(date.getUTCMonth() + 1);
-    const day = pad(date.getUTCDate());
+    const year = date.year();
+    const month = pad(date.month() + 1);
+    const day = pad(date.date());
 
     const marketOpenDate = `${year}-${month}-${day}T00:00:00.000Z`;
 
     console.log(
-      "Current Time: ",
-      currentTime,
+      "Current Time Local: ",
+      currentTimeLocal,
       "\nCurrentIso: ",
       currentTimeIso
     );
     console.log("MarketOpenUTCDate: ", marketOpenDate, typeof marketOpenDate);
-    console.log("currentUTCDate:    ", reformatUTCDate, typeof currentUTCDate);
+    console.log("CurrentUTCDate:    ", reformatUTCDate, typeof currentUTCDate);
 
     this.setState(
       {
         marketOpen: marketOpenDate,
-        currentDateTime: reformatUTCDate
+        currentDateTime: reformatUTCDate,
+        prevDayCloseStart: prevDayCloseStart,
+        prevDayCloseEnd: prevDayCloseEnd
       },
-      () => this.getAllData()
+      () => this.getAllData(), this.getPriorClose()
     );
   };
 
-  getData = () => {
+  getPriorClose = () => {
     /* https://docs.gdax.com/?javascript#get-historic-rates */
     /*
       RESPONSE FORMAT - [time,low, high, open, close, volume]
     */
 
-    const GDAX_Endpoint = "https://api.gdax.com";
+    const GDAX_Endpoint = "https://api.gdax.com/products";
 
-    Axios.get("/products/LTC-USD/candles", {
+    const params = {
       baseURL: GDAX_Endpoint,
       params: {
-        start: this.state.marketOpen /* "2017-09-17T00:00:00Z" */,
-        end: this.state.currentDateTime /* "2017-09-17T20:03:28Z" */,
-        granularity: "900" /* 60sec * (desired timeframe in minutes) */
+        start: this.state.prevDayCloseStart,
+        end: this.state.prevDayCloseEnd,
+        granularity: "600"
       }
-    })
-      .then(response => {
-        // console.log("Historic Rates[0]: ", response.data[0]);
-        this.setState({
-          marketDataBTCUSD: response.data
-        });
-      })
+    };
+
+    const getBTC = () => Axios.get("/BTC-USD/candles", params);
+    const getETH = () => Axios.get("/ETH-USD/candles", params);
+    const getLTC = () => Axios.get("/LTC-USD/candles", params);
+
+    Axios.all([getBTC(), getETH(), getLTC()])
+      .then(
+        Axios.spread((btc, eth, ltc) => {
+          console.log("BTC: ", btc.data[0][4]);
+          console.log("ETH: ", eth.data[0][4]);
+          console.log("LTC: ", ltc.data[0][4]);
+          this.setState({
+            priorCloseBTCUSD: btc.data[0][4],
+            priorCloseETHUSD: eth.data[0][4],
+            priorCloseLTCUSD: ltc.data[0][4],
+          })
+        })
+      )
       .catch(err => console.log("ERROR: ", err));
   };
 
   getAllData = () => {
-    
     /* https://docs.gdax.com/?javascript#get-historic-rates */
     /*
       RESPONSE FORMAT - [time,low, high, open, close, volume]
@@ -117,6 +147,8 @@ class MarketChart extends Component {
       )
       .catch(err => console.log("ERROR: ", err));
   };
+
+  //#endregion methods
 
   render() {
     // console.table(this.state.marketData);

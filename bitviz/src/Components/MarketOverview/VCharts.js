@@ -13,6 +13,7 @@ class CandleCharts extends Component {
   /*
           RESPONSE FORMAT
     [time,low, high, open, close, volume]
+    *NOTE* GDAX returns time in Epoch Unix
     */
 
   render() {
