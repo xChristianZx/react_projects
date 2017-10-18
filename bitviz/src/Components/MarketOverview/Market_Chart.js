@@ -17,7 +17,7 @@ class MarketChart extends Component {
       marketDataLTCUSD: [],
       priorCloseBTCUSD: null,
       priorCloseETHUSD: null,
-      priorCloseLTCUSD: null,
+      priorCloseLTCUSD: null
     };
   }
   //#region methods
@@ -34,7 +34,7 @@ class MarketChart extends Component {
     const prevDay = moment()
       .subtract(1, "day")
       .format("YYYY-MM-DD");
-    console.log("PrevDay: ", prevDay);
+    // console.log("PrevDay: ", prevDay);
 
     const prevDayCloseStart = `${prevDay}T23:49:00Z`;
     const prevDayCloseEnd = `${prevDay}T23:59:59Z`;
@@ -58,7 +58,7 @@ class MarketChart extends Component {
     console.log(
       "Current Time Local: ",
       currentTimeLocal,
-      "\nCurrentIso: ",
+      "\nCurrentUTCISO: ",
       currentTimeIso
     );
     console.log("MarketOpenUTCDate: ", marketOpenDate, typeof marketOpenDate);
@@ -71,7 +71,8 @@ class MarketChart extends Component {
         prevDayCloseStart: prevDayCloseStart,
         prevDayCloseEnd: prevDayCloseEnd
       },
-      () => this.getAllData(), this.getPriorClose()
+      () => this.getAllData(),
+      this.getPriorClose()
     );
   };
 
@@ -99,14 +100,15 @@ class MarketChart extends Component {
     Axios.all([getBTC(), getETH(), getLTC()])
       .then(
         Axios.spread((btc, eth, ltc) => {
-          console.log("BTC: ", btc.data[0][4]);
-          console.log("ETH: ", eth.data[0][4]);
-          console.log("LTC: ", ltc.data[0][4]);
+          // console.log("BTC: ", btc.data[0][4]);
+          // console.log("ETH: ", eth.data[0][4]);
+          // console.log("LTC: ", ltc.data[0][4]);
+          console.log("getPriorClose Success!");
           this.setState({
             priorCloseBTCUSD: btc.data[0][4],
             priorCloseETHUSD: eth.data[0][4],
-            priorCloseLTCUSD: ltc.data[0][4],
-          })
+            priorCloseLTCUSD: ltc.data[0][4]
+          });
         })
       )
       .catch(err => console.log("ERROR: ", err));
@@ -135,9 +137,10 @@ class MarketChart extends Component {
     Axios.all([getBTC(), getETH(), getLTC()])
       .then(
         Axios.spread((btc, eth, ltc) => {
-          console.log("BTC: ", btc.data);
-          console.log("ETH: ", eth.data);
-          console.log("LTC: ", ltc.data);
+          console.log("getAllData Success!");
+          // console.log("BTC: ", btc.data);
+          // console.log("ETH: ", eth.data);
+          // console.log("LTC: ", ltc.data);
           this.setState({
             marketDataBTCUSD: btc.data,
             marketDataETHUSD: eth.data,
