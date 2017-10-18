@@ -36,7 +36,7 @@ class MarketChart extends Component {
       .format("YYYY-MM-DD");
     // console.log("PrevDay: ", prevDay);
 
-    const prevDayCloseStart = `${prevDay}T23:49:00Z`;
+    const prevDayCloseStart = `${prevDay}T23:39:00Z`;
     const prevDayCloseEnd = `${prevDay}T23:59:59Z`;
     console.log("prevDayCloseStart: ", prevDayCloseStart);
     console.log("prevDayCloseEnd: ", prevDayCloseEnd);
@@ -71,8 +71,7 @@ class MarketChart extends Component {
         prevDayCloseStart: prevDayCloseStart,
         prevDayCloseEnd: prevDayCloseEnd
       },
-      () => this.getAllData(),
-      this.getPriorClose()
+      () => this.getPriorClose()
     );
   };
 
@@ -100,15 +99,15 @@ class MarketChart extends Component {
     Axios.all([getBTC(), getETH(), getLTC()])
       .then(
         Axios.spread((btc, eth, ltc) => {
-          // console.log("BTC: ", btc.data[0][4]);
-          // console.log("ETH: ", eth.data[0][4]);
-          // console.log("LTC: ", ltc.data[0][4]);
+          console.log("BTC prior: ", btc.data[0]);
+          console.log("ETH prior: ", eth.data[0]);
+          console.log("LTC prior: ", ltc.data[0]);
           console.log("getPriorClose Success!");
           this.setState({
             priorCloseBTCUSD: btc.data[0][4],
             priorCloseETHUSD: eth.data[0][4],
             priorCloseLTCUSD: ltc.data[0][4]
-          });
+          }, () => this.getAllData());
         })
       )
       .catch(err => console.log("ERROR: ", err));
@@ -154,18 +153,31 @@ class MarketChart extends Component {
   //#endregion methods
 
   render() {
-    // console.table(this.state.marketData);
+    console.log("prevCloseStart: ", this.state.prevDayCloseStart);
+    console.log("prevCloseEnd: ", this.state.prevDayCloseEnd);
     // console.log("marketData[0]", this.state.marketDataBTCUSD[0]);
     return (
       <div className="market-overview-container">
         <div className="market-chart-item">
-          <CandleCharts label={"BTC/USD"} data={this.state.marketDataBTCUSD} />
+          <CandleCharts
+            label={"BTC/USD"}
+            data={this.state.marketDataBTCUSD}
+            priorClose={this.state.priorCloseBTCUSD}
+          />
         </div>
         <div className="market-chart-item">
-          <CandleCharts label={"ETH/USD"} data={this.state.marketDataETHUSD} />
+          <CandleCharts
+            label={"ETH/USD"}
+            data={this.state.marketDataETHUSD}
+            priorClose={this.state.priorCloseETHUSD}
+          />
         </div>
         <div className="market-chart-item">
-          <CandleCharts label={"LTC/USD"} data={this.state.marketDataLTCUSD} />
+          <CandleCharts
+            label={"LTC/USD"}
+            data={this.state.marketDataLTCUSD}
+            priorClose={this.state.priorCloseLTCUSD}
+          />
         </div>
       </div>
     );
