@@ -135,6 +135,17 @@ class RecipeAccordion extends Component {
     });
   };
 
+  modalClose = () => {
+    this.setState({
+      recipe: {
+        title: "",
+        ingredients: [],
+        instructions: ""
+      },
+      id: null
+    });
+  }
+
   renderPanels = () => {
     /* renders according panels for accordion component shorthand */
     if (!this.state.recipeList) {
@@ -161,6 +172,7 @@ class RecipeAccordion extends Component {
                   onClick={this.deleteRecipe.bind(this, panel.id)}
                 />
                 <Modal
+                onClose={this.modalClose}
                   trigger={
                     <Button
                       onClick={this.editRecipe.bind(this, panel.id)}
