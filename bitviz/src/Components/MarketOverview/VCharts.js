@@ -43,26 +43,28 @@ class CandleCharts extends Component {
     // const lastCloseX1 = reformatSlice[0].x;
     const priorDaysClose = this.props.priorClose;
 
-    const dayDiff = _.round((lastCloseY - priorDaysClose), 2);
+    const dayDiff = _.round(lastCloseY - priorDaysClose, 2);
     const dayChangeDelta = _.round(
       (lastCloseY - priorDaysClose) / priorDaysClose * 100,
       2
     );
     const formattedDayChangeDelta =
-      dayChangeDelta > 0 ? `+${dayDiff} (${dayChangeDelta}%)` : `${dayDiff} (${dayChangeDelta}%)`;
+      dayChangeDelta > 0
+        ? `+${dayDiff} (${dayChangeDelta}%)`
+        : `${dayDiff} (${dayChangeDelta}%)`;
 
     const dayChangeDeltaColorFill = () =>
       dayChangeDelta < 0
-        ? { fontSize: 20, fill: "red", fontWeight: 'bold' }
-        : { fontSize: 20, fill: "green", fontWeight: 'bold' };
+        ? { fontSize: 20, fill: "red", fontWeight: "bold" }
+        : { fontSize: 20, fill: "green", fontWeight: "bold" };
 
     //volume test
-    const test = () =>
-      !this.props.data.length > 0
-        ? null
-        : this.props.data.map(item => Math.round(item[5]));
+    // const test = () =>
+    //   !this.props.data.length > 0
+    //     ? null
+    //     : this.props.data.map(item => Math.round(item[5]));
 
-    const testSlice = test().slice(0, 29);
+    // const testSlice = test().slice(0, 29);
 
     const priorCloseLine = reformatSlice.map(item => {
       return { x: item.x, y: priorDaysClose };
@@ -132,18 +134,18 @@ class CandleCharts extends Component {
         {/* Prior Close Line */}
         <VictoryLine
           data={priorCloseLine}
-          labels={[`PriorClose - ${priorDaysClose}`]}
+          labels={[`Prior Close - ${priorDaysClose}`]}
           labelComponent={<VictoryLabel dx={-330} />}
           style={{
             data: {
-              stroke: "red",
-              strokeOpacity: 0.4,
+              stroke: "#E0A400",
+              strokeOpacity: 1,
               strokeDasharray: "10,10",
               strokeWidth: 1
             },
             labels: {
-              fill: "red",
-              opacity: 0.4
+              fill: "#E0A400",
+              opacity: 1
             }
           }}
         />
