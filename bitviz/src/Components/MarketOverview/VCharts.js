@@ -42,16 +42,20 @@ class CandleCharts extends Component {
     // const lastCloseX0 = reformatSlice[28].x;
     // const lastCloseX1 = reformatSlice[0].x;
     const priorDaysClose = this.props.priorClose;
-    
-    const dayDiff = (lastCloseY-priorDaysClose);
+
+    const dayDiff = _.round((lastCloseY - priorDaysClose), 2);
     const dayChangeDelta = _.round(
       (lastCloseY - priorDaysClose) / priorDaysClose * 100,
       2
     );
-    const formattedDayChangeDelta = (dayChangeDelta > 0) ? `+${dayChangeDelta}`: dayChangeDelta;
-    
-    const dayChangeDeltaColorFill = () => (dayChangeDelta < 0) ? {fontSize: 18, fill: 'red'} : {fontSize: 18, fill: 'green'};
-    
+    const formattedDayChangeDelta =
+      dayChangeDelta > 0 ? `+${dayDiff} (${dayChangeDelta}%)` : `${dayDiff} (${dayChangeDelta}%)`;
+
+    const dayChangeDeltaColorFill = () =>
+      dayChangeDelta < 0
+        ? { fontSize: 20, fill: "red", fontWeight: 'bold' }
+        : { fontSize: 20, fill: "green", fontWeight: 'bold' };
+
     //volume test
     const test = () =>
       !this.props.data.length > 0
@@ -66,7 +70,7 @@ class CandleCharts extends Component {
     // console.log("reformatSlice: ", reformatSlice);
     // console.log("lastCloseX0: ", lastCloseX0);
     // console.log("lastCloseX1: ", lastCloseX1);
-    // // console.log("DLINE: ", dLine);
+    // console.log("DLINE: ", dLine);
     // console.log("PRIORCLOSE: ", this.props.priorClose);
     // console.log("DayChange: ", dayChangeDelta);
     // console.log('DayDiff: ', dayDiff)
@@ -75,20 +79,34 @@ class CandleCharts extends Component {
     return (
       <VictoryChart
         animate={{ duration: 2000 }}
-        theme={VictoryTheme.material}
         padding={50}
         domainPadding={{ x: [5, 5], y: 25 }}
         scale={{ x: "time" }}
+        theme={VictoryTheme.material}
         height={350}
         width={500}
       >
-        {/* Coin Label */ }
-        <VictoryLabel x={50} y={20} style={{fontSize: 18, fontWeight: 'bold'}} text={this.props.label} />
-        {/* DayChange% */ }
-        <VictoryLabel x={275} y={20} style={dayChangeDeltaColorFill()} text={`${formattedDayChangeDelta}%`} />
-        {/* Spot Price */ }
-        <VictoryLabel x={375} y={20} style={{fontSize: 20}} text={`$${lastCloseY}`} />
-        
+        {/* Coin Label */}
+        <VictoryLabel
+          x={50}
+          y={20}
+          style={{ fontSize: 18, fontWeight: "bold" }}
+          text={this.props.label}
+        />
+        {/* DayChange% */}
+        <VictoryLabel
+          x={175}
+          y={20}
+          style={dayChangeDeltaColorFill()}
+          text={formattedDayChangeDelta}
+        />
+        {/* Spot Price */}
+        <VictoryLabel
+          x={375}
+          y={20}
+          style={{ fontSize: 20, fontWeight: 600 }}
+          text={`$${lastCloseY}`}
+        />
 
         {/* X-Axis */}
         <VictoryAxis
@@ -99,7 +117,8 @@ class CandleCharts extends Component {
           }}
         />
         {/* Y-Axis */}
-        <VictoryAxis          
+        <VictoryAxis
+          dependentAxis
           fixLabelOverlap={true}
           orientation="right"
           offsetX={50}
@@ -109,7 +128,6 @@ class CandleCharts extends Component {
             grid: { stroke: "grey", strokeWidth: 1, strokeOpacity: 0.35 },
             tickLabels: { fontSize: 16, padding: 0 }
           }}
-          dependentAxis
         />
         {/* Prior Close Line */}
         <VictoryLine
