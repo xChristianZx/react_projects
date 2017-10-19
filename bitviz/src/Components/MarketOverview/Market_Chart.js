@@ -97,7 +97,7 @@ class MarketChart extends Component {
     const getETH = () => Axios.get("/ETH-USD/candles", params);
     const getLTC = () => Axios.get("/LTC-USD/candles", params);
 
-    Axios.all([getBTC(), getETH(), getLTC()])
+    Axios.all([getBTC(), getETH(), getLTC()].map(err => err.catch(e => e)))
       .then(
         Axios.spread((btc, eth, ltc) => {
           console.log("BTC prior: ", btc.data[0]);
@@ -137,7 +137,7 @@ class MarketChart extends Component {
     const getETH = () => Axios.get("/ETH-USD/candles", params);
     const getLTC = () => Axios.get("/LTC-USD/candles", params);
 
-    Axios.all([getBTC(), getETH(), getLTC()])
+    Axios.all([getBTC(), getETH(), getLTC()].map(err => err.catch(e => e)))
       .then(
         Axios.spread((btc, eth, ltc) => {
           console.log("getAllData Success!");
