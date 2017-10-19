@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import _ from "lodash";
 import {
   VictoryChart,
   VictoryAxis,
@@ -8,7 +9,6 @@ import {
   VictoryLabel,
   VictoryBar
 } from "victory";
-import _ from 'lodash';
 
 class CandleCharts extends Component {
   /*
@@ -42,8 +42,15 @@ class CandleCharts extends Component {
     // const lastCloseX0 = reformatSlice[28].x;
     // const lastCloseX1 = reformatSlice[0].x;
     const priorDaysClose = this.props.priorClose;
-
-    const dayChange = _.round((((lastCloseY- priorDaysClose) / priorDaysClose)*100), 2)    
+    
+    const dayDiff = (lastCloseY-priorDaysClose);
+    const dayChangeDelta = _.round(
+      (lastCloseY - priorDaysClose) / priorDaysClose * 100,
+      2
+    );
+    const formattedDayChangeDelta = (dayChangeDelta > 0) ? `+${dayChangeDelta}`: dayChangeDelta;
+    
+    const dayChangeDeltaColorFill = () => (dayChangeDelta < 0) ? {fontSize: 18, fill: 'red'} : {fontSize: 18, fill: 'green'};
     
     //volume test
     const test = () =>
@@ -60,8 +67,11 @@ class CandleCharts extends Component {
     // console.log("lastCloseX0: ", lastCloseX0);
     // console.log("lastCloseX1: ", lastCloseX1);
     // // console.log("DLINE: ", dLine);
-    console.log("PRIORCLOSE: ", this.props.priorClose)
-    console.log("DayChange: ", dayChange)
+    // console.log("PRIORCLOSE: ", this.props.priorClose);
+    // console.log("DayChange: ", dayChangeDelta);
+    // console.log('DayDiff: ', dayDiff)
+    // console.log('formattedDayChangeDelta: ', formattedDayChangeDelta);
+
     return (
       <VictoryChart
         animate={{ duration: 2000 }}
@@ -72,9 +82,12 @@ class CandleCharts extends Component {
         height={350}
         width={500}
       >
-        <VictoryLabel x={50} y={20} text={this.props.label} />
-        <VictoryLabel x={375} y={20} text={`$${lastCloseY}`} />
-        <VictoryLabel x={275} y={20} text={`${dayChange}%`} />
+        {/* Coin Label */ }
+        <VictoryLabel x={50} y={20} style={{fontSize: 18, fontWeight: 'bold'}} text={this.props.label} />
+        {/* DayChange% */ }
+        <VictoryLabel x={275} y={20} style={dayChangeDeltaColorFill()} text={`${formattedDayChangeDelta}%`} />
+        {/* Spot Price */ }
+        <VictoryLabel x={375} y={20} style={{fontSize: 20}} text={`$${lastCloseY}`} />
         
 
         {/* X-Axis */}
@@ -86,7 +99,7 @@ class CandleCharts extends Component {
           }}
         />
         {/* Y-Axis */}
-        <VictoryAxis
+        <VictoryAxis          
           fixLabelOverlap={true}
           orientation="right"
           offsetX={50}
@@ -101,8 +114,8 @@ class CandleCharts extends Component {
         {/* Prior Close Line */}
         <VictoryLine
           data={priorCloseLine}
-          labels={[`PriorClose - ${priorDaysClose}`]}  
-          labelComponent={<VictoryLabel dx={-330}/>}        
+          labels={[`PriorClose - ${priorDaysClose}`]}
+          labelComponent={<VictoryLabel dx={-330} />}
           style={{
             data: {
               stroke: "red",
@@ -111,8 +124,8 @@ class CandleCharts extends Component {
               strokeWidth: 1
             },
             labels: {
-              fill: 'red',
-              opacity: 0.4,
+              fill: "red",
+              opacity: 0.4
             }
           }}
         />
