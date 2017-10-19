@@ -28,25 +28,23 @@ class MarketChart extends Component {
   setTime = () => {
     /*GDAX API requires UTC time in ISO 8601 */
     const date = moment();
-    const currentTimeLocal = moment(date).format();
-    const currentTimeIso = moment().toISOString();
+    const currentTimeLocal = date.format();
+    const currentTimeIso = date.toISOString(); //toISOString always returns timestamp in UTC
 
-    const prevDay = moment()
+    // console.log("date: ", date.utc().format());
+
+    const prevDay = date
+      .utc()
       .subtract(1, "day")
       .format("YYYY-MM-DD");
-    // console.log("PrevDay: ", prevDay);
 
     const prevDayCloseStart = `${prevDay}T23:39:00Z`;
     const prevDayCloseEnd = `${prevDay}T23:59:59Z`;
-    console.log("prevDayCloseStart: ", prevDayCloseStart);
-    console.log("prevDayCloseEnd: ", prevDayCloseEnd);
+    // console.log("PrevDay: ", prevDay);
+    // console.log("prevDayCloseStart: ", prevDayCloseStart);
+    // console.log("prevDayCloseEnd: ", prevDayCloseEnd);
 
-    /*This removes the sec & ms off of the ISOstring so that GDAX returns the timeframe request as requested */
-    const currentUTCDate = currentTimeIso
-      .split("")
-      .slice(0, 16)
-      .join("");
-    const reformatUTCDate = `${currentUTCDate}Z`;
+    /* padding for ISO format and sets marketOpenDate*/
 
     const pad = num => (num < 10 ? "0" + num : num);
     const year = date.year();
@@ -55,19 +53,22 @@ class MarketChart extends Component {
 
     const marketOpenDate = `${year}-${month}-${day}T00:00:00.000Z`;
 
-    console.log(
-      "Current Time Local: ",
-      currentTimeLocal,
-      "\nCurrentUTCISO: ",
-      currentTimeIso
-    );
+    /* Removes the sec & ms off of the ISOstring so that GDAX returns the timeframe request as requested */
+    const currentUTCDate = currentTimeIso
+      .split("")
+      .slice(0, 16)
+      .join("");
+    const reformatcurrentUTCDate = `${currentUTCDate}Z`;
+
+    console.log("Current Time Local: ", currentTimeLocal);
+    console.log("CurrentUTCISO: ", currentTimeIso);
     console.log("MarketOpenUTCDate: ", marketOpenDate, typeof marketOpenDate);
-    console.log("CurrentUTCDate:    ", reformatUTCDate, typeof currentUTCDate);
+    console.log("CurrentUTCDate:  ", reformatcurrentUTCDate, typeof currentUTCDate);
 
     this.setState(
       {
         marketOpen: marketOpenDate,
-        currentDateTime: reformatUTCDate,
+        currentDateTime: reformatcurrentUTCDate,
         prevDayCloseStart: prevDayCloseStart,
         prevDayCloseEnd: prevDayCloseEnd
       },
@@ -103,11 +104,14 @@ class MarketChart extends Component {
           console.log("ETH prior: ", eth.data[0]);
           console.log("LTC prior: ", ltc.data[0]);
           console.log("getPriorClose Success!");
-          this.setState({
-            priorCloseBTCUSD: btc.data[0][4],
-            priorCloseETHUSD: eth.data[0][4],
-            priorCloseLTCUSD: ltc.data[0][4]
-          }, () => this.getAllData());
+          this.setState(
+            {
+              priorCloseBTCUSD: btc.data[0][4],
+              priorCloseETHUSD: eth.data[0][4],
+              priorCloseLTCUSD: ltc.data[0][4]
+            },
+            () => this.getAllData()
+          );
         })
       )
       .catch(err => console.log("ERROR: ", err));
@@ -153,8 +157,8 @@ class MarketChart extends Component {
   //#endregion methods
 
   render() {
-    console.log("prevCloseStart: ", this.state.prevDayCloseStart);
-    console.log("prevCloseEnd: ", this.state.prevDayCloseEnd);
+    // console.log("prevCloseStart: ", this.state.prevDayCloseStart);
+    // console.log("prevCloseEnd: ", this.state.prevDayCloseEnd);
     // console.log("marketData[0]", this.state.marketDataBTCUSD[0]);
     return (
       <div className="market-overview-container">
