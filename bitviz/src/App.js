@@ -12,7 +12,7 @@ class App extends Component {
         <Header />
         <Navbar />
         <MarketChart />
-        <Footer className="footer"/>
+        <Footer />
       </div>
     );
   }

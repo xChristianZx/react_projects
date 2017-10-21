@@ -1,12 +1,14 @@
 .header-container {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-content: flex-start;
+  justify-content: flex-start;
+  align-content: center;
   text-align: left;
-  margin: auto; }
+  margin: 0;
+  padding: 0.8rem;
+  width: 90vw; }
 
 .header-text {
-  margin: 3px 10px;
-  padding: 5px 10px;
-  width: 80%; }
+  padding: 0.8rem;
+  margin: 0;
+  font-size: 3rem; }

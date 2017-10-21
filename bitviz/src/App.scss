@@ -1,5 +1,6 @@
 //temporary setting for victory chart creation
 html {
+  font-size: 10px;  
   height: 100%;
 }
 
@@ -12,10 +13,10 @@ body {
 
 .App {
   position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
   height: 100%;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
+  width: 95vw;
 }

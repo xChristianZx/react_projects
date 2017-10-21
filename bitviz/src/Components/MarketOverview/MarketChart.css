@@ -5,13 +5,17 @@
   align-content: center;
   align-items: center;
   border: 1px solid black;
-  margin-top: .5rem;
-  padding: .5rem;
+  margin-top: 1rem;
+  padding: 0.8rem;
   height: 50vh;
-  width: 80vw; }
+  width: 90vw; }
 
 .market-chart-item {
-  height: 100%;
-  width: 100%;
   margin: 0;
-  padding: .5rem; }
+  padding: 0rem;
+  height: 100%;
+  width: 100%; }
+  .market-chart-item:first-child {
+    padding-left: 0.8rem; }
+  .market-chart-item:last-child {
+    padding-right: 0.8rem; }

@@ -6,7 +6,9 @@
   border: 1px solid black;
   background: #b8b8b8;
   color: white;
-  font-size: 16px; }
+  font-size: 16px;
+  padding: 0.8rem;
+  width: 90vw; }
 
 .navbar-links {
   display: flex;
@@ -14,11 +16,13 @@
   justify-content: flex-start;
   align-content: center;
   list-style: none;
+  margin: 0;
+  padding: 0.8rem;
   width: 70%; }
 
 .navbar-links li {
-  margin: 5px; }
+  margin: 0.5rem; }
 
 .navbar-date-time {
   align-self: center;
-  margin: 5px; }
+  margin: 0.5rem; }
