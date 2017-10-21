@@ -4,27 +4,27 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin: .5rem;
-  padding: .5rem;
+  margin: .8rem;
+  padding: .8rem;
   bottom: 0;
   width: 100%;
 }
 
 .footer-disclaimer {
-  font-size: 0.5rem;
+  font-size: 1rem;
   font-style: italic;
   margin: auto;
   & p {
     margin: 0;
-    padding: 0.2rem;
+    padding: 0.4rem;
   }
 }
 
 .footer-name {
-  font-size: 0.5rem;
+  font-size: 1rem;
   margin: auto;
   & p {
     margin: 0;
-    padding: 0.2rem;
+    padding: 0.4rem;
   }
 }
