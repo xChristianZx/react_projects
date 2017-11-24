@@ -15,6 +15,7 @@ class MarketChart extends Component {
       marketDataBTCUSD: [],
       marketDataETHUSD: [],
       marketDataLTCUSD: [],
+      marketTimeGranularity: null,
       priorCloseBTCUSD: null,
       priorCloseETHUSD: null,
       priorCloseLTCUSD: null
@@ -22,7 +23,14 @@ class MarketChart extends Component {
   }
   //#region methods
   componentDidMount = () => {
+    this.defaultState();
     this.setTime();
+  };
+
+  defaultState = () => {
+    this.setState({
+      marketTimeGranularity: 900
+    });
   };
 
   setTime = () => {
@@ -63,7 +71,11 @@ class MarketChart extends Component {
     console.log("Current Time Local: ", currentTimeLocal);
     console.log("CurrentUTCISO: ", currentTimeIso);
     console.log("MarketOpenUTCDate: ", marketOpenDate, typeof marketOpenDate);
-    console.log("CurrentUTCDate:  ", reformatcurrentUTCDate, typeof currentUTCDate);
+    console.log(
+      "CurrentUTCDate:  ",
+      reformatcurrentUTCDate,
+      typeof currentUTCDate
+    );
 
     this.setState(
       {
@@ -121,7 +133,8 @@ class MarketChart extends Component {
     /* https://docs.gdax.com/?javascript#get-historic-rates */
     /*
       RESPONSE FORMAT - [time,low, high, open, close, volume]
-    */
+      Granularity default set to 900sec/ 15min
+      */
 
     const GDAX_Endpoint = "https://api.gdax.com/products";
     const params = {
@@ -129,7 +142,8 @@ class MarketChart extends Component {
       params: {
         start: this.state.marketOpen /* "2017-09-17T00:00:00Z" */,
         end: this.state.currentDateTime /* "2017-09-17T20:03:28Z" */,
-        granularity: "900" /* 60sec * (desired timeframe in minutes) */
+        granularity: this.state
+          .marketTimeGranularity /* 60sec * (desired timeframe in minutes) */
       }
     };
 
