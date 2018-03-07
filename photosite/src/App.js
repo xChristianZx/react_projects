@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import './App.css';
-import Headline from './Components/headline.js';
-import PhotoList from './Components/photo_list.js';
-import Photos from './Assets/photos.js';
-import LightboxDisplay from './Components/lightbox.js';
+import React, { Component } from "react";
+import "./App.css";
+import Headline from "./Components/Headline.js";
+import PhotoList from "./Components/PhotoList";
+import Photos from "./Assets/photos.js";
+import LightboxDisplay from "./Components/LightBox.js";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      photos: [],
-    }
+      photos: []
+    };
   }
 
   componentDidMount = () => {
     this.setState({
-      photos: Photos,
-    })
-  }
-  
+      photos: Photos
+    });
+  };
+
   render() {
     return (
       <div className="App">

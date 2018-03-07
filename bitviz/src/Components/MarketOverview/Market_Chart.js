@@ -142,8 +142,7 @@ class MarketChart extends Component {
       params: {
         start: this.state.marketOpen /* "2017-09-17T00:00:00Z" */,
         end: this.state.currentDateTime /* "2017-09-17T20:03:28Z" */,
-        granularity: this.state
-          .marketTimeGranularity /* 60sec * (desired timeframe in minutes) */
+        granularity: this.state.marketTimeGranularity /* 60sec * (desired timeframe in minutes) */
       }
     };
 
