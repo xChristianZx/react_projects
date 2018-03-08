@@ -1,4 +1,6 @@
 /* Construction of AWS s3 bucket via https://learnetto.com/blog/tutorial-how-to-use-amazon-s3-and-cloudfront-cdn-to-serve-images-fast-and-cheap */
+/* Note: key of "src" needs to be maintained for LightBox to grab url */
+
 const Photos = [
   {
     index: 1,
@@ -89,7 +91,7 @@ const Photos = [
     index: 18,
     title: "Pic 18",
     src: "https://d1ch7g5367xvmf.cloudfront.net/assets_live/DSCF1099-1024w.jpg"
-  },
+  }
 ];
 
 export default Photos;

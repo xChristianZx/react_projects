@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Headline from "./Components/Headline.js";
-import PhotoList from "./Components/PhotoList";
 import Photos from "./Assets/photos.js";
 import LightboxDisplay from "./Components/LightBox.js";
 
@@ -24,8 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Headline />
-        <LightboxDisplay images={this.state.photos} />
-        {/* <PhotoList photos={this.state.photos} /> */}
+        <LightboxDisplay images={this.state.photos} />        
       </div>
     );
   }
