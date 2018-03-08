@@ -1,22 +1,26 @@
 @import url("https://fonts.googleapis.com/css?family=Lora|Merriweather+Sans:300|Open+Sans|Raleway:300|Roboto+Slab|Josefin+Sans:300");
+
 .headline-container {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-content: center;
   margin: 20px auto;
-  width: 90%; }
+  width: 90%;
+}
 
 .headline-text {
   margin: 0 25px;
-  font: 28px/1.5 "Josefin Sans", sans-serif; }
+  font: 28px/1.5 "Josefin Sans", sans-serif;
+}
 
 .photo-container {
   display: flex;
   flex-flow: column wrap;
   margin: auto;
   margin-top: 10px;
-  width: 90%; }
+  width: 90%;
+}
 
 .photo-array-container {
   display: flex;
@@ -25,7 +29,8 @@
   align-content: center;
   align-items: stretch;
   margin: auto;
-  padding: 0; }
+  padding: 0;
+}
 
 .photo-list-item {
   display: flex;
@@ -34,34 +39,44 @@
   flex-basis: 30%;
   list-style: none;
   overflow: hidden;
-  width: 100%; }
+  width: 100%;
+}
 
 .photo-list-item-img {
   /* OBJECT-FIT FOR THE WIN! */
   object-fit: cover;
   width: 100%;
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 img:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 @media all and (max-width: 500px) {
   .headline-container {
     justify-content: center;
-    margin: 5px auto; }
+    margin: 5px auto;
+  }
+
   .headline-text {
-    font: 18px/1 "Josefin Sans", sans-serif; }
+    font: 18px/1 "Josefin Sans", sans-serif;
+  }
+
   .photo-array-container {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-content: center;
     align-items: center;
-    margin: auto; }
+    margin: auto;
+  }
   .photo-list-item {
     margin: 1px;
     padding: 1px;
     flex-grow: 1;
     flex-basis: auto;
-    height: auto; } }
+    height: auto;
+  }
+}
