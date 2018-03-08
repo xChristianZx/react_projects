@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Headline from "./Components/Headline.js";
 import Photos from "./Assets/photos.js";
-import LightboxDisplay from "./Components/LightBox.js";
+import LightboxDisplay from "./Containers/LightBox.js";
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Headline />
-        <LightboxDisplay images={this.state.photos} />        
+        <LightboxDisplay images={this.state.photos} />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Lightbox from "react-images";
-import Photolist from "./PhotoList.js";
+import Photolist from "../Components/PhotoList.js";
 
 class LightboxDisplay extends Component {
   constructor(props) {
