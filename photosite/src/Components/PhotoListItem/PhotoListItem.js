@@ -14,9 +14,12 @@ const PhotoListItem = ({ photo, onClick }) => {
   // console.log("Image_link: ", image_link);
   return (
     <li className="photo-list-item">
-      <a onClick={e => onClick(e)}>
-        <img className="photo-list-item-img" src={path} alt={photo.title} />
-      </a>
+      <img
+        className="photo-list-item-img"
+        onClick={e => onClick(e)}
+        src={path}
+        alt={photo.title}
+      />
     </li>
   );
 };

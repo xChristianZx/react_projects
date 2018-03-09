@@ -6,7 +6,7 @@
   align-items: stretch;
   margin: auto;
   padding: 0; }
-  @media all and (max-width: 500px) {
+  @media all and (max-width: 768px) {
     .photo-array-container {
       display: flex;
       flex-flow: column wrap;

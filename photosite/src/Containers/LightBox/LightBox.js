@@ -3,6 +3,11 @@ import Lightbox from "react-images";
 import Photolist from "../../Components/PhotoList/PhotoList";
 import "./LightBox.css";
 
+const lightboxStyleFix = {
+  footer: { fontSize: "1.8rem" },
+  container: { background: "rgba(0, 0, 0, 0.9)" }
+};
+
 class LightboxDisplay extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +58,7 @@ class LightboxDisplay extends Component {
 
   render() {
     return (
-      <div className="photo-wrapper">
+      <div className="content-wrapper">
         {this.renderPhotoList()}
         <Lightbox
           images={this.props.images}
@@ -64,6 +69,7 @@ class LightboxDisplay extends Component {
           onClose={this.closeLightbox}
           onClickImage={this.handleClickImage}
           backdropClosesModal={true}
+          theme={lightboxStyleFix}
         />
       </div>
     );

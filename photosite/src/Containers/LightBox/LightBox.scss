@@ -1,8 +1,20 @@
-.photo-wrapper {
+.content-wrapper {
   // border: 1px solid green;
   display: flex;
   flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   margin: auto;
   margin-top: 1rem;
   width: 90%;
+  flex: 1 0 auto;
+
+  @media all and (max-width: 425px) {
+    width: 100%;
+  }
+}
+
+.lightbox {
+  font-size: 30px;
 }
