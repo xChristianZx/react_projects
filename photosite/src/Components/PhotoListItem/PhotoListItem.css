@@ -1,0 +1,29 @@
+.photo-list-item {
+  display: flex;
+  margin: 3px;
+  flex-grow: 1;
+  flex-basis: 30%;
+  list-style: none;
+  overflow: hidden;
+  width: 100%; }
+  .photo-list-item:hover {
+    transform: scale(1.01);
+    cursor: pointer; }
+
+.photo-list-item-img {
+  /* OBJECT-FIT FOR THE WIN! */
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .photo-list-item-img:hover {
+    opacity: 0.65;
+    cursor: pointer; }
+
+@media all and (max-width: 500px) {
+  .photo-list-item {
+    margin: 1px;
+    padding: 1px;
+    flex-grow: 1;
+    flex-basis: auto;
+    height: auto; } }

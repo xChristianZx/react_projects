@@ -1,5 +1,6 @@
 import React from "react";
-import PhotoListItem from "./PhotoListItem.js";
+import PhotoListItem from "../PhotoListItem/PhotoListItem.js";
+import "./PhotoList.css";
 
 const Photolist = ({ images, openLightbox }) => {
   // console.log('props.photos: ', props.images);
@@ -15,11 +16,7 @@ const Photolist = ({ images, openLightbox }) => {
     );
   });
 
-  return (
-    <div className="photo-container">
-      <ul className="photo-array-container">{photoItem}</ul>
-    </div>
-  );
+  return <ul className="photo-array-container">{photoItem}</ul>;
 };
 
 export default Photolist;

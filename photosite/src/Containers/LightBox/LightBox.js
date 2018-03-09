@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Lightbox from "react-images";
-import Photolist from "../Components/PhotoList.js";
+import Photolist from "../../Components/PhotoList/PhotoList";
+import "./LightBox.css";
 
 class LightboxDisplay extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class LightboxDisplay extends Component {
 
   render() {
     return (
-      <div>
+      <div className="photo-wrapper">
         {this.renderPhotoList()}
         <Lightbox
           images={this.props.images}

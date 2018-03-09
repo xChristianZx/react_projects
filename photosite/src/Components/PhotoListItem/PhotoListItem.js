@@ -1,4 +1,5 @@
 import React from "react";
+import "./PhotoListItem.css";
 
 const PhotoListItem = ({ photo, onClick }) => {
   if (!photo) {
@@ -13,11 +14,9 @@ const PhotoListItem = ({ photo, onClick }) => {
   // console.log("Image_link: ", image_link);
   return (
     <li className="photo-list-item">
-      <div>
-        <a onClick={e => onClick(e)}>
-          <img className="photo-list-item-img" src={path} alt={photo.title} />
-        </a>
-      </div>
+      <a onClick={e => onClick(e)}>
+        <img className="photo-list-item-img" src={path} alt={photo.title} />
+      </a>
     </li>
   );
 };

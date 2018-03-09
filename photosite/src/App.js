@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Headline from "./Components/Headline.js";
+import Headline from "./Components/Headline/Headline";
 import Photos from "./Assets/photos.js";
-import LightboxDisplay from "./Containers/LightBox.js";
+import LightboxDisplay from "./Containers/LightBox/LightBox";
 
 class App extends Component {
   constructor(props) {

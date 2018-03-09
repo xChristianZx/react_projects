@@ -1,0 +1,19 @@
+.photo-array-container {
+  // border: 1px solid blue;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: stretch;
+  margin: auto;
+  padding: 0;
+
+  @media all and (max-width: 500px) {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+  }
+}
