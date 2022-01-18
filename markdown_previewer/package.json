@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "marked": "^0.4.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-scripts": "^1.1.5"
   },
   "scripts": {
